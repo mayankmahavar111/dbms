@@ -2,9 +2,10 @@ import MySQLdb
 import Tkinter
 import tkMessageBox
 from Tkinter import *
-import  os
+import os
 import mp3play
 import time
+import tkFileDialog
 
 i=0
 
@@ -83,39 +84,111 @@ def frame():
     root.mainloop()
 
 def playSongs(songs,index):
-    global i
+    global i,f,location
+    try:
+        if f.ispaused() and i==index:
+            f.unpause()
+        else:
+            print "Hello"
+            if index <0 :
+                index=0
+            if index >= len(songs):
+                index=len(songs)-1
+            i=index
+            filename =  location+"/"+str(songs[index])
+            print filename
+            f= mp3play.load(filename)
+            f.play()
+            print f.isplaying(),f.ispaused(),f.volume(100),i
+            print "World"
+    except:
+        if index <0 :
+            index=0
+        if index >= len(songs):
+            index=len(songs)-1
+        i=index
+        filename = location + "/" + str(songs[index])
+        f = mp3play.load(filename)
+        f.play()
+        print f.isplaying(), f.ispaused(), f.volume(100), i
 
-    print "Hello"
-    if index <0 :
-        index=0
-    if index >= len(songs):
-        index=len(songs)-1
-    i=index
-    filename =  "E:\cinema songs\Dhruva\Dhruva (2016) ~320Kbps"+"/"+str(songs[index])
-    print filename
-    f= mp3play.load(filename)
-    f.play()
-    print f.isplaying(),f.ispaused(),f.volume(),i
-    print "World"
+def pause(songs,index):
+    global i,f
+    try:
+        if f.isplaying() :
+            f.pause()
+    except:
+        pass
+
+def nop():
+    global root
+    filewin = Toplevel(root)
+    button = Button(filewin, text="NO Operation")
+    button.pack()
 
 def allButton():
-    global i
+    global i,songs,location,root
+    location="E:\cinema songs\Dhruva\Dhruva (2016) ~320Kbps"
     i=0
-    songs = os.listdir("E:\cinema songs\Dhruva\Dhruva (2016) ~320Kbps")
+    songs = os.listdir(location)
     root = Tk()
     root.minsize(width=100,height=100)
+    MenuBar = Menu(root)
+    fileMenu = Menu(MenuBar, tearoff=0)
+    fileMenu.add_command(label="New", command=nop)
+    fileMenu.add_command(label="Open", command=nop)
+    fileMenu.add_command(label="Save", command=nop)
+    fileMenu.add_command(label="Save as...", command=nop)
+    fileMenu.add_command(label="Close", command=nop)
+    fileMenu.add_separator()
+
+    fileMenu.add_command(label="Exit", command=root.quit)
+    MenuBar.add_cascade(label="File", menu=fileMenu)
+    editMenu = Menu(MenuBar, tearoff=0)
+    editMenu.add_command(label="Undo", command=nop)
+
+    editMenu.add_separator()
+
+    editMenu.add_command(label="Cut", command=nop)
+    editMenu.add_command(label="Copy", command=nop)
+    editMenu.add_command(label="Paste", command=nop)
+    editMenu.add_command(label="Delete", command=nop)
+    editMenu.add_command(label="Select All", command=nop)
+
+    MenuBar.add_cascade(label="Edit", menu=editMenu)
+    helpMenu = Menu(MenuBar, tearoff=0)
+    helpMenu.add_command(label="Help Index", command=nop)
+    helpMenu.add_command(label="About...", command=nop)
+    MenuBar.add_cascade(label="Help", menu=helpMenu)
+
+    root.config(menu=MenuBar)
+
+    pauseCommand = lambda : pause(songs,i)
     playCommand= lambda : playSongs(songs,i)
     nextCommand = lambda : playSongs(songs,i+1)
     prevCommand = lambda :playSongs(songs,i-1)
+    browseCommand=lambda :fileDialogue()
     play=Tkinter.Button(root,text="Play ",command=playCommand)
     next=Tkinter.Button(root,text="Next ",command=nextCommand)
     prev = Tkinter.Button(root,text="Prev ",command = prevCommand)
+    pau=Tkinter.Button(root,text="Pause",command=pauseCommand)
+    Brow=Tkinter.Button(root,text="Browse",command=browseCommand)
     play.pack()
     next.pack()
     prev.pack()
+    Brow.pack()
+    pau.pack()
     root.mainloop()
 
-
-
+def fileDialogue():
+    global location,songs,i
+    root= Tk()
+    file= tkFileDialog.askdirectory(parent=root,title="Choose a folder")
+    print file
+    location=file
+    songs=os.listdir(location)
+    i=0
+    print location,songs[0]
+    root.destroy()
 
 allButton()
