@@ -6,6 +6,7 @@ import  os
 import mp3play
 import time
 import tkFileDialog
+import sys
 
 i=0
 
@@ -156,4 +157,14 @@ def fileDialogue():
     print location,songs[0]
     root.destroy()
 
-allButton()
+def setup():
+    pass
+
+if __name__ == '__main__':
+    print len(sys.argv),sys.argv
+    if len(sys.argv) >2 :
+        print "Wrong Input"
+    if sys.argv[1] == 'setup' :
+        setup()
+
+    allButton()
