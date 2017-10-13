@@ -63,7 +63,7 @@ def select(event):
     print picked
 
 def listsong():
-    filename = "H:\Music\ENGLISH"
+    filename = "E:\cinema songs\Dhruva\Dhruva (2016) ~320Kbps"
     songs= os.listdir(filename)
     root = Tk()
     root.minsize(width=666,height=666)
@@ -91,7 +91,7 @@ def playSongs(songs,index):
     if index >= len(songs):
         index=len(songs)-1
     i=index
-    filename =  "H:\Music\ENGLISH"+"/"+str(songs[index])
+    filename =  "E:\cinema songs\Dhruva\Dhruva (2016) ~320Kbps"+"/"+str(songs[index])
     print filename
     f= mp3play.load(filename)
     f.play()
@@ -101,7 +101,7 @@ def playSongs(songs,index):
 def allButton():
     global i
     i=0
-    songs = os.listdir("H:\Music\ENGLISH")
+    songs = os.listdir("E:\cinema songs\Dhruva\Dhruva (2016) ~320Kbps")
     root = Tk()
     root.minsize(width=100,height=100)
     playCommand= lambda : playSongs(songs,i)
