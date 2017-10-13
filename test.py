@@ -7,6 +7,7 @@ import mp3play
 import time
 import tkFileDialog
 import sys
+import getpass
 
 i=0
 
@@ -127,13 +128,8 @@ def nop():
     button = Button(filewin, text="NO Operation")
     button.pack()
 
-def allButton():
-    global i,songs,location,root
-    location="E:\cinema songs\Dhruva\Dhruva (2016) ~320Kbps"
-    i=0
-    songs = os.listdir(location)
-    root = Tk()
-    root.minsize(width=100,height=100)
+def nav():
+    global root
     MenuBar = Menu(root)
     fileMenu = Menu(MenuBar, tearoff=0)
     fileMenu.add_command(label="New", command=nop)
@@ -164,6 +160,15 @@ def allButton():
 
     root.config(menu=MenuBar)
 
+
+def allButton():
+    global i,songs,location,root
+    location="H:\Music\English"
+    i=0
+    songs = os.listdir(location)
+    root = Tk()
+    root.minsize(width=100,height=100)
+    nav()
     pauseCommand = lambda : pause(songs,i)
     playCommand= lambda : playSongs(songs,i)
     nextCommand = lambda : playSongs(songs,i+1)
@@ -193,13 +198,27 @@ def fileDialogue():
     root.destroy()
 
 def setup():
-    pass
+    os.system('cls')
+    print "Please Run apache and mysql from xampp before procedding"
+    try:
+        temp=raw_input("Enter to continue....")
+        username = raw_input("Enter Username of mysql : ")
+        password= getpass.getpass("Enter Password for mysql :")
+        database=raw_input("Enter exisiting Database name : ")
+        test=list(password)
+        db= MySQLdb.connect('localhost',username,password,database)
+        cursor = db.cursor()
+        cursor.execute("select version()")
+        print cursor.fetchone()
+
+    except:
+        print "Unable to setup try again"
 
 if __name__ == '__main__':
     print len(sys.argv),sys.argv
     if len(sys.argv) >2 :
         print "Wrong Input"
+        exit()
     if sys.argv[1] == 'setup' :
         setup()
-
-    allButton()
+    printdb()
