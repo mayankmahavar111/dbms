@@ -2,7 +2,7 @@ import MySQLdb
 import Tkinter
 import tkMessageBox
 from Tkinter import *
-import  os
+import os
 import mp3play
 import time
 import tkFileDialog
@@ -65,7 +65,7 @@ def select(event):
     print picked
 
 def listsong():
-    filename = "H:\Music\ENGLISH"
+    filename = "E:\cinema songs\Dhruva\Dhruva (2016) ~320Kbps"
     songs= os.listdir(filename)
     root = Tk()
     root.minsize(width=666,height=666)
@@ -121,14 +121,49 @@ def pause(songs,index):
     except:
         pass
 
+def nop():
+    global root
+    filewin = Toplevel(root)
+    button = Button(filewin, text="NO Operation")
+    button.pack()
 
 def allButton():
-    global i,songs,location
-    location="H:\Music\ENGLISH"
+    global i,songs,location,root
+    location="E:\cinema songs\Dhruva\Dhruva (2016) ~320Kbps"
     i=0
     songs = os.listdir(location)
     root = Tk()
     root.minsize(width=100,height=100)
+    MenuBar = Menu(root)
+    fileMenu = Menu(MenuBar, tearoff=0)
+    fileMenu.add_command(label="New", command=nop)
+    fileMenu.add_command(label="Open", command=nop)
+    fileMenu.add_command(label="Save", command=nop)
+    fileMenu.add_command(label="Save as...", command=nop)
+    fileMenu.add_command(label="Close", command=nop)
+    fileMenu.add_separator()
+
+    fileMenu.add_command(label="Exit", command=root.quit)
+    MenuBar.add_cascade(label="File", menu=fileMenu)
+    editMenu = Menu(MenuBar, tearoff=0)
+    editMenu.add_command(label="Undo", command=nop)
+
+    editMenu.add_separator()
+
+    editMenu.add_command(label="Cut", command=nop)
+    editMenu.add_command(label="Copy", command=nop)
+    editMenu.add_command(label="Paste", command=nop)
+    editMenu.add_command(label="Delete", command=nop)
+    editMenu.add_command(label="Select All", command=nop)
+
+    MenuBar.add_cascade(label="Edit", menu=editMenu)
+    helpMenu = Menu(MenuBar, tearoff=0)
+    helpMenu.add_command(label="Help Index", command=nop)
+    helpMenu.add_command(label="About...", command=nop)
+    MenuBar.add_cascade(label="Help", menu=helpMenu)
+
+    root.config(menu=MenuBar)
+
     pauseCommand = lambda : pause(songs,i)
     playCommand= lambda : playSongs(songs,i)
     nextCommand = lambda : playSongs(songs,i+1)
