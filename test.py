@@ -128,19 +128,8 @@ def nop():
     button = Button(filewin, text="NO Operation")
     button.pack()
 
-<<<<<<< HEAD
 def nav():
     global root
-=======
-def allButton():
-    global i,songs,location,root
-    location="E:\cinema songs\Dhruva\Dhruva (2016) ~320Kbps"
-    i=0
-    songs = os.listdir(location)
-    root = Tk()
-    root.minsize(width=100,height=100)
-    root.resizable(width=False,height=False)
->>>>>>> 7f2570c27b32376baa0e4c4281881d84c67319aa
     MenuBar = Menu(root)
     fileMenu = Menu(MenuBar, tearoff=0)
     fileMenu.add_command(label="New", command=nop)
@@ -179,6 +168,7 @@ def allButton():
     songs = os.listdir(location)
     root = Tk()
     root.minsize(width=100,height=100)
+    root.resizable(width=False,height=False)
     nav()
     pauseCommand = lambda : pause(songs,i)
     playCommand= lambda : playSongs(songs,i)
@@ -226,15 +216,55 @@ def setup():
         cursor = db.cursor()
         cursor.execute("select version()")
         print cursor.fetchone()
+        temp=raw_input("Do you want to setup new database(Y/N) : ")
+        if 'Y' in temp or 'y' in temp:
+            os.system('cls')
+            database=raw_input("Enter new database name : ")
+            try:
+                cursor.execute("create database "+database)
+                cursor.close()
+                db.close()
+            except Exception as e:
+                print e
+                cursor.execute("show databases")
+                print cursor.fetchall()
+                temp=raw_input("Enter to continue ...")
+            os.system('cls')
+            db=MySQLdb.connect('localhost',username,password,database)
+            cursor=db.cursor()
+            cursor.execute('select version()')
+            print cursor.fetchall()
+        temp=raw_input("Do You Want to setup Tables (Y/N) : ")
+        if 'Y' in temp or 'y' in temp :
+            text=read()
+            try:
+                cursor.execute(text)
+                cursor.execute("show tables")
+                print "Total Tables are : "
+                print cursor.fetchall()
+            except Exception as e :
+                print e
 
     except:
         print "Unable to setup try again"
 
+def read():
+    text=""
+    f= open('tables.sql')
+    lines=f.read()
+    lines= lines.split("\n\t")
+    for x in lines:
+        text= text + " "+ x
+    return text
+
 if __name__ == '__main__':
     print len(sys.argv),sys.argv
-    if len(sys.argv) >2 :
-        print "Wrong Input"
-        exit()
-    if sys.argv[1] == 'setup' :
-        setup()
-    printdb()
+    try:
+        if len(sys.argv) >2 :
+            print "Wrong Input"
+            exit()
+        if sys.argv[1] == 'setup' :
+            setup()
+        #allButton()
+    except:
+        read()
