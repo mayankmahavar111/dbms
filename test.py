@@ -128,8 +128,19 @@ def nop():
     button = Button(filewin, text="NO Operation")
     button.pack()
 
+<<<<<<< HEAD
 def nav():
     global root
+=======
+def allButton():
+    global i,songs,location,root
+    location="E:\cinema songs\Dhruva\Dhruva (2016) ~320Kbps"
+    i=0
+    songs = os.listdir(location)
+    root = Tk()
+    root.minsize(width=100,height=100)
+    root.resizable(width=False,height=False)
+>>>>>>> 7f2570c27b32376baa0e4c4281881d84c67319aa
     MenuBar = Menu(root)
     fileMenu = Menu(MenuBar, tearoff=0)
     fileMenu.add_command(label="New", command=nop)
@@ -174,16 +185,21 @@ def allButton():
     nextCommand = lambda : playSongs(songs,i+1)
     prevCommand = lambda :playSongs(songs,i-1)
     browseCommand=lambda :fileDialogue()
-    play=Tkinter.Button(root,text="Play ",command=playCommand)
-    next=Tkinter.Button(root,text="Next ",command=nextCommand)
-    prev = Tkinter.Button(root,text="Prev ",command = prevCommand)
-    pau=Tkinter.Button(root,text="Pause",command=pauseCommand)
-    Brow=Tkinter.Button(root,text="Browse",command=browseCommand)
-    play.pack()
-    next.pack()
-    prev.pack()
-    Brow.pack()
-    pau.pack()
+    image1=PhotoImage(file="src/play.gif")
+    play=Tkinter.Button(root,image=image1,command=playCommand)
+    image2=PhotoImage(file="src/pause.gif")
+    pau=Tkinter.Button(root,image=image2,command=pauseCommand)
+    image3=PhotoImage(file="src/next_track.gif")
+    next=Tkinter.Button(root,image=image3,command=nextCommand)
+    image4=PhotoImage(file="src/previous_track.gif")
+    prev = Tkinter.Button(root,image=image4,command = prevCommand)
+    image5 = PhotoImage(file="src/browse.gif")
+    brow=Tkinter.Button(root,image=image5,command=browseCommand)
+    play.pack(side="left")
+    pau.pack(side="left")
+    next.pack(side="left")
+    prev.pack(side="left")
+    brow.pack(side="left")
     root.mainloop()
 
 def fileDialogue():
