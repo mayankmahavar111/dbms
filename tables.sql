@@ -1,4 +1,4 @@
-create table track(
+create table if not EXISTS track(
 	TrackId int unsigned not null auto_increment primary key,
 	Album_name varchar(255) not null,
 	Track_name varchar(255) not null default '',

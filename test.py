@@ -8,6 +8,7 @@ import time
 import tkFileDialog
 import sys
 import getpass
+import mutagen
 
 i=0
 
@@ -236,7 +237,16 @@ def setup():
             print cursor.fetchall()
         temp=raw_input("Do You Want to setup Tables (Y/N) : ")
         if 'Y' in temp or 'y' in temp :
-            text=read()
+            text=read().split(";")
+            for x in text:
+                try:
+                    print x
+                    cursor.execute(x+';')
+                except Exception as e:
+                    print e
+            cursor.execute("show tables")
+            print cursor.fetchall()
+            """
             try:
                 cursor.execute(text)
                 cursor.execute("show tables")
@@ -244,7 +254,9 @@ def setup():
                 print cursor.fetchall()
             except Exception as e :
                 print e
-
+            """
+        print "Succesfully Setup"
+        print "run insert command to add songs initialy"
     except:
         print "Unable to setup try again"
 
@@ -257,14 +269,25 @@ def read():
         text= text + " "+ x
     return text
 
+def insert():
+    location = "H:\eagle get"
+    lis=os.listdir(location)
+    count =0
+    for x in lis:
+        if x.endswith('.mp3'):
+            count = count+1
+    print count
+
+
 if __name__ == '__main__':
-    print len(sys.argv),sys.argv
     try:
         if len(sys.argv) >2 :
             print "Wrong Input"
             exit()
         if sys.argv[1] == 'setup' :
             setup()
-        #allButton()
-    except:
-        read()
+        if sys.argv[1] == 'insert':
+            insert()
+    except Exception as e:
+        print e
+        printdb()
