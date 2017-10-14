@@ -127,14 +127,7 @@ def nop():
     button = Button(filewin, text="NO Operation")
     button.pack()
 
-def allButton():
-    global i,songs,location,root
-    location="E:\cinema songs\Dhruva\Dhruva (2016) ~320Kbps"
-    i=0
-    songs = os.listdir(location)
-    root = Tk()
-    root.minsize(width=100,height=100)
-    root.resizable(width=False,height=False)
+def nav():
     MenuBar = Menu(root)
     fileMenu = Menu(MenuBar, tearoff=0)
     fileMenu.add_command(label="New", command=nop)
@@ -165,6 +158,16 @@ def allButton():
 
     root.config(menu=MenuBar)
 
+
+def allButton():
+    global i,songs,location,root
+    location="E:\cinema songs\Dhruva\Dhruva (2016) ~320Kbps"
+    i=0
+    songs = os.listdir(location)
+    root = Tk()
+    root.minsize(width=100,height=100)
+    root.resizable(width=False,height=False)
+    nav()
     pauseCommand = lambda : pause(songs,i)
     playCommand= lambda : playSongs(songs,i)
     nextCommand = lambda : playSongs(songs,i+1)
