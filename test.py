@@ -7,6 +7,8 @@ import mp3play
 import time
 import tkFileDialog
 import sys
+import getpass
+import mutagen
 
 i=0
 
@@ -128,6 +130,10 @@ def nop():
     button.pack()
 
 def nav():
+<<<<<<< HEAD
+=======
+    global root
+>>>>>>> 30ff9b1360751fcae36024d78dff706524e88484
     MenuBar = Menu(root)
     fileMenu = Menu(MenuBar, tearoff=0)
     fileMenu.add_command(label="New", command=nop)
@@ -161,7 +167,11 @@ def nav():
 
 def allButton():
     global i,songs,location,root
+<<<<<<< HEAD
     location="E:\cinema songs\Dhruva\Dhruva (2016) ~320Kbps"
+=======
+    location="H:\Music\English"
+>>>>>>> 30ff9b1360751fcae36024d78dff706524e88484
     i=0
     songs = os.listdir(location)
     root = Tk()
@@ -202,13 +212,89 @@ def fileDialogue():
     root.destroy()
 
 def setup():
-    pass
+    os.system('cls')
+    print "Please Run apache and mysql from xampp before procedding"
+    try:
+        temp=raw_input("Enter to continue....")
+        username = raw_input("Enter Username of mysql : ")
+        password= getpass.getpass("Enter Password for mysql :")
+        database=raw_input("Enter exisiting Database name : ")
+        test=list(password)
+        db= MySQLdb.connect('localhost',username,password,database)
+        cursor = db.cursor()
+        cursor.execute("select version()")
+        print cursor.fetchone()
+        temp=raw_input("Do you want to setup new database(Y/N) : ")
+        if 'Y' in temp or 'y' in temp:
+            os.system('cls')
+            database=raw_input("Enter new database name : ")
+            try:
+                cursor.execute("create database "+database)
+                cursor.close()
+                db.close()
+            except Exception as e:
+                print e
+                cursor.execute("show databases")
+                print cursor.fetchall()
+                temp=raw_input("Enter to continue ...")
+            os.system('cls')
+            db=MySQLdb.connect('localhost',username,password,database)
+            cursor=db.cursor()
+            cursor.execute('select version()')
+            print cursor.fetchall()
+        temp=raw_input("Do You Want to setup Tables (Y/N) : ")
+        if 'Y' in temp or 'y' in temp :
+            text=read().split(";")
+            for x in text:
+                try:
+                    print x
+                    cursor.execute(x+';')
+                except Exception as e:
+                    print e
+            cursor.execute("show tables")
+            print cursor.fetchall()
+            """
+            try:
+                cursor.execute(text)
+                cursor.execute("show tables")
+                print "Total Tables are : "
+                print cursor.fetchall()
+            except Exception as e :
+                print e
+            """
+        print "Succesfully Setup"
+        print "run insert command to add songs initialy"
+    except:
+        print "Unable to setup try again"
+
+def read():
+    text=""
+    f= open('tables.sql')
+    lines=f.read()
+    lines= lines.split("\n\t")
+    for x in lines:
+        text= text + " "+ x
+    return text
+
+def insert():
+    location = "H:\eagle get"
+    lis=os.listdir(location)
+    count =0
+    for x in lis:
+        if x.endswith('.mp3'):
+            count = count+1
+    print count
+
 
 if __name__ == '__main__':
-    print len(sys.argv),sys.argv
-    if len(sys.argv) >2 :
-        print "Wrong Input"
-    if sys.argv[1] == 'setup' :
-        setup()
-
-    allButton()
+    try:
+        if len(sys.argv) >2 :
+            print "Wrong Input"
+            exit()
+        if sys.argv[1] == 'setup' :
+            setup()
+        if sys.argv[1] == 'insert':
+            insert()
+    except Exception as e:
+        print e
+        printdb()
