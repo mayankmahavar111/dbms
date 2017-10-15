@@ -9,14 +9,17 @@ import tkFileDialog
 import sys
 import getpass
 import mutagen
+import re
+from mutagen.mp3 import MP3
 
 i=0
 
 def printdb():
-    db = MySQLdb.connect('localhost', 'root', '', 'test')
+    db = createDb()
 
     cursor = db.cursor()
     ch=0
+    os.system('cls')
     while ch!=1 :
         ch=int(raw_input("Enter 0 for command Input \nEnter 1 for exit\n"))
         if ch == 1:
@@ -33,8 +36,8 @@ def printdb():
                 count = count +1
                 data = cursor.fetchone()
             print count
-        except:
-            print "Bad Syntax "
+        except Exception as e:
+            print e
         temp = raw_input("Enter to continue ...\n")
         os.system('cls')
     cursor.close()
@@ -197,26 +200,19 @@ def fileDialogue():
     global location,songs,i
     root= Tk()
     file= tkFileDialog.askdirectory(parent=root,title="Choose a folder")
-    print file
+    #print file
     location=file
     songs=os.listdir(location)
     i=0
-    print location,songs[0]
+    #print location,songs[0]
     root.destroy()
+    return file
 
 def setup():
     os.system('cls')
-    print "Please Run apache and mysql from xampp before procedding"
     try:
-        temp=raw_input("Enter to continue....")
-        username = raw_input("Enter Username of mysql : ")
-        password= getpass.getpass("Enter Password for mysql :")
-        database=raw_input("Enter exisiting Database name : ")
-        test=list(password)
-        db= MySQLdb.connect('localhost',username,password,database)
+        db= createDb()
         cursor = db.cursor()
-        cursor.execute("select version()")
-        print cursor.fetchone()
         temp=raw_input("Do you want to setup new database(Y/N) : ")
         if 'Y' in temp or 'y' in temp:
             os.system('cls')
@@ -231,10 +227,6 @@ def setup():
                 print cursor.fetchall()
                 temp=raw_input("Enter to continue ...")
             os.system('cls')
-            db=MySQLdb.connect('localhost',username,password,database)
-            cursor=db.cursor()
-            cursor.execute('select version()')
-            print cursor.fetchall()
         temp=raw_input("Do You Want to setup Tables (Y/N) : ")
         if 'Y' in temp or 'y' in temp :
             text=read().split(";")
@@ -248,12 +240,12 @@ def setup():
             print cursor.fetchall()
             """
             try:
-                cursor.execute(text)
-                cursor.execute("show tables")
-                print "Total Tables are : "
-                print cursor.fetchall()
+            cursor.execute(text)
+            cursor.execute("show tables")
+            print "Total Tables are : "
+            print cursor.fetchall()
             except Exception as e :
-                print e
+            print e
             """
         print "Succesfully Setup"
         print "run insert command to add songs initialy"
@@ -264,19 +256,157 @@ def read():
     text=""
     f= open('tables.sql')
     lines=f.read()
-    lines= lines.split("\n\t")
+    lines= re.split('\n |\n\t |',lines)
     for x in lines:
         text= text + " "+ x
     return text
 
+def storCredentials(username,password,host,databse):
+    f= open('Credential.txt','wb')
+    f.write(username+'\n'+password+'\n'+host+'\n'+databse)
+    f.close()
+
+def createDb():
+    print "Please Run apache and mysql from xampp before procedding"
+    try:
+        temp = raw_input("Enter to continue....")
+        os.system('cls')
+        username = raw_input("Enter Username of mysql : ")
+        password = getpass.getpass("Enter Password for mysql :")
+        database = raw_input("Enter exisiting/Current Database name : ")
+        test = list(password)
+        db = MySQLdb.connect('localhost', username, password, database)
+        cursor = db.cursor()
+        cursor.execute("select version()")
+        print cursor.fetchone()
+        storCredentials(username,password,'localhost',database)
+        return db
+    except Exception as e:
+        print e
+
+def check(db):
+    try:
+        print "Checking the choosen database is fit for insert track or not"
+        cursor=db.cursor()
+        track=['TrackId','Album_name','Track_name','Location','Released_date','length','Favourite']
+        cursor.execute("select column_name from information_schema.columns where table_name='track'")
+        data = cursor.fetchall()
+        data= list(set(data))
+        print len(data)
+        if len(data) < len(track):
+            print "Tables are not created succesfully. setup again"
+        count =0
+        for i in range(len(data)):
+            if data[i][0] in track :
+                count =  count + 1
+            #print re.split('( |,) ',data[0])[0] in track
+        if len(track) == count :
+            print "Fit to procced"
+
+    except Exception as e:
+        print e
+        exit()
+
+def display(track):
+    root= Tk()
+    root.maxsize(width=400,height=400)
+    destroyCommand = lambda  : root.destroy()
+    box = Listbox(root)
+    button =Button(root,text="Add",command = destroyCommand,width=10)
+    #back=Button(root,text="Back",command=insert,width=10)
+    box.pack()
+    for x in track:
+        box.insert(END,x)
+    button.pack()
+    #back.pack()
+    root.mainloop()
+
+
+def getTrack(file):
+    track =[]
+    for x in os.listdir(file):
+            if x.endswith(".mp3"):
+                track.append(x)
+    #print location,songs[0]
+    return track
+
+def showTable(x):
+    for row in x:
+        print row
+
+def query(db,file,tracks,index):
+    cursor=db.cursor()
+    if index == 'insert':
+        try:
+            trackid=0
+            for x in tracks:
+                cursor.execute("select max(trackid) from track")
+                data =  cursor.fetchone()
+                #print data[0]
+                if data[0] is None :
+                    trackid = 1
+                else:
+                    trackid = int(data[0])+1
+                details= filedetails(x,file)
+                #print details
+                #print "hello"
+                album_name = str(details.get('TALB'))
+                track_name = str(details.get('TIT2'))
+                #print "world"
+                track_location = str(details.filename)
+                released_date = str(details.get('TDRC'))
+                track_length = int(tracklength(x,file))
+
+                sql="""insert into track (trackid,album_name,track_name,location,released_date,length,favourite ) VALUES ("{trackid}","{album_name}","{track_name}","{track_location}","{released_date}","{track_length}",0)"""
+                #sql = """insert into track (trackid,album_name,track_name,location,released_date,length,favourite ) VALUES (%d,%s,%s,%s,%s,%d,0) """,(trackid,album_name,track_name,track_location,released_date,track_length)
+
+                format_sql =sql.format(trackid=trackid,album_name=album_name,track_name=track_name,track_location=file,released_date=released_date,track_length=track_length)
+                print "Track id ","=", trackid
+                print format_sql
+                cursor.execute("select track_name from track ")
+                data=cursor.fetchall()
+                temp=0
+                for x in data:
+                    #print x[0], track_name, x[0] == track_name
+                    if x[0] == track_name:
+                        temp=1
+                        break
+                if temp==1:
+                    continue
+                cursor.execute(format_sql)
+                db.commit()
+            cursor.execute("select * from track")
+            showTable(cursor.fetchall())
+        except Exception as e:
+            print  e
+        return
+
+
 def insert():
-    location = "H:\eagle get"
-    lis=os.listdir(location)
-    count =0
-    for x in lis:
-        if x.endswith('.mp3'):
-            count = count+1
-    print count
+    try:
+        db=createDb()
+        check(db)
+        #print "hello"
+        file=fileDialogue()
+        track=getTrack(file)
+        #print "world"
+        print len(track)
+        display(track)
+        query(db,file,track,'insert')
+        #filedetails(track,file)
+
+    except Exception as e:
+        print e
+
+def tracklength(track,file):
+    #print "hello"
+    x= MP3(file+"/"+track)
+    #print "world"
+    return x.info.length
+
+def filedetails(track,file):
+    d= mutagen.File(file+'/'+track)
+    return d
 
 
 if __name__ == '__main__':
@@ -287,7 +417,8 @@ if __name__ == '__main__':
         if sys.argv[1] == 'setup' :
             setup()
         if sys.argv[1] == 'insert':
-            insert()
+            db=insert()
+        if sys.argv[1] == 'prompt':
+            printdb()
     except Exception as e:
         print e
-        printdb()

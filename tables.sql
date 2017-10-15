@@ -3,7 +3,6 @@ create table if not EXISTS track(
 	Album_name varchar(255) not null,
 	Track_name varchar(255) not null default '',
 	Location varchar(255) not null,
-	Lyrics varchar(255) not null,
 	Released_date date,
 	length int unsigned not null,
 	Favourite int unsigned not null
