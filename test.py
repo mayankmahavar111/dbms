@@ -219,8 +219,7 @@ def setup():
             database=raw_input("Enter new database name : ")
             try:
                 cursor.execute("create database "+database)
-                cursor.close()
-                db.close()
+                cursor.execute('use '+database)
             except Exception as e:
                 print e
                 cursor.execute("show databases")
@@ -288,7 +287,7 @@ def check(db):
     try:
         print "Checking the choosen database is fit for insert track or not"
         cursor=db.cursor()
-        track=['TrackId','Album_name','Track_name','Location','Released_date','length','Favourite']
+        track=['TrackId','Album_name','AlbumId','Track_name','Location','Released_date','length','Favourite']
         cursor.execute("select column_name from information_schema.columns where table_name='track'")
         data = cursor.fetchall()
         data= list(set(data))
@@ -302,7 +301,9 @@ def check(db):
             #print re.split('( |,) ',data[0])[0] in track
         if len(track) == count :
             print "Fit to procced"
-
+        else:
+            print "Not enough entities to proceed ..."
+            exit()
     except Exception as e:
         print e
         exit()
@@ -334,19 +335,49 @@ def showTable(x):
     for row in x:
         print row
 
+def getFlag(data,key):
+    for x in data:
+        if x[0] == key:
+            return False
+    return True
+
+def getRelid(a,b):
+    for x in a :
+        #print x,a
+        if x[0]==b[0] and x[1] == b[1]:
+            return False
+    return True
+
+def getid(x):
+    if x is None:
+        return 1
+    else:
+        return int(x)+1
+
+def getQuery(x):
+    if x=="insert_album":
+        return """insert into album (albumid,album_name,No_Of_Tracks) VALUES ("{albumid}","{album_name}","{length}")"""
+    if x=="insert_track":
+        return """insert into track (trackid,albumid,album_name,track_name,location,released_date,length,favourite ) VALUES ("{trackid}","{albumid}","{album_name}","{track_name}","{track_location}","{released_date}","{track_length}",0)"""
+    if x=="insert_art":
+        return """insert into album_art (albumartid,image,albumid) values ("{artid}","{image}","{albumid}")"""
+    if x=="insert_genre":
+        return """insert into genre (genreid,genrename) VALUES ("{genreid}","{genre_name}")"""
+    if x=="insert_type":
+        return """insert into type (albumid,trackid,genreid) VALUES ("{albumid}","{trackid}","{genreid}")"""
+
 def query(db,file,tracks,index):
     cursor=db.cursor()
     if index == 'insert':
         try:
-            trackid=0
             for x in tracks:
+
                 cursor.execute("select max(trackid) from track")
                 data =  cursor.fetchone()
-                #print data[0]
-                if data[0] is None :
-                    trackid = 1
-                else:
-                    trackid = int(data[0])+1
+                trackid=getid(data[0])
+                cursor.execute("select max(albumid) from album")
+                data=cursor.fetchone()
+                albumid=getid(data[0])
                 details= filedetails(x,file)
                 #print details
                 #print "hello"
@@ -356,25 +387,110 @@ def query(db,file,tracks,index):
                 track_location = str(details.filename)
                 released_date = str(details.get('TDRC'))
                 track_length = int(tracklength(x,file))
+                genre_name=str(details.get('TCON'))
+                try:
+                    image=details.tags['APIC:'].data
+                except:
+                    pass
 
-                sql="""insert into track (trackid,album_name,track_name,location,released_date,length,favourite ) VALUES ("{trackid}","{album_name}","{track_name}","{track_location}","{released_date}","{track_length}",0)"""
+
+                #album Table
+                album_sql=getQuery('insert_album')
+                album_sql=album_sql.format(
+                    albumid=albumid,
+                    album_name=album_name,
+                    length=len(tracks)
+                )
+                cursor.execute("select album_name from album")
+                if getFlag(cursor.fetchall(),album_name):
+                    cursor.execute(album_sql)
+                    db.commit()
+
+
+                #Track Table
+                q='select albumid from album where album_name="'+album_name+'"'
+                #print q
+                cursor.execute(q)
+                albumid=cursor.fetchone()[0]
+                insert_sql= getQuery('insert_track')
                 #sql = """insert into track (trackid,album_name,track_name,location,released_date,length,favourite ) VALUES (%d,%s,%s,%s,%s,%d,0) """,(trackid,album_name,track_name,track_location,released_date,track_length)
-
-                format_sql =sql.format(trackid=trackid,album_name=album_name,track_name=track_name,track_location=file,released_date=released_date,track_length=track_length)
-                print "Track id ","=", trackid
-                print format_sql
+                format_sql =insert_sql.format(
+                    trackid=trackid,
+                    albumid=albumid,
+                    album_name=album_name,
+                    track_name=track_name,
+                    track_location=file,
+                    released_date=released_date,
+                    track_length=track_length
+                )
                 cursor.execute("select track_name from track ")
                 data=cursor.fetchall()
-                temp=0
-                for x in data:
-                    #print x[0], track_name, x[0] == track_name
-                    if x[0] == track_name:
-                        temp=1
-                        break
-                if temp==1:
-                    continue
-                cursor.execute(format_sql)
-                db.commit()
+                if getFlag(data,track_name):
+                    cursor.execute(format_sql)
+                    print "Track id ", "=", trackid
+                    print format_sql
+                    db.commit()
+
+                #Album Art Table
+                cursor.execute('select max(albumartid) from album_art')
+                artid = getid(cursor.fetchone()[0])
+                cursor.execute('select image from album_art')
+                art_sql=getQuery('insert_art')
+                if getFlag(cursor.fetchall(),'albumart/'+str(album_name)+'.jpg'):
+                    try:
+                        with open('albumart/'+str(album_name)+'.jpg','wb') as f :
+                            f.write(image)
+                        art_sql = art_sql.format(
+                            artid=artid,
+                            image='albumart/' + str(album_name)+'.jpg',
+                            albumid=albumid
+                        )
+                    except:
+                        art_sql = art_sql.format(
+                            artid=artid,
+                            image='None',
+                            albumid=albumid
+                        )
+                    cursor.execute(art_sql)
+                    db.commit()
+
+
+                #Genre Table
+                cursor.execute('select max(genreid) from genre')
+                genreid=getid(cursor.fetchone()[0])
+                genre_sql=getQuery('insert_genre')
+                cursor.execute('select genrename from genre')
+                if getFlag(cursor.fetchall(),genre_name):
+                    genre_sql=genre_sql.format(
+                        genreid=genreid,
+                        genre_name=genre_name
+                    )
+                    cursor.execute(genre_sql)
+                    db.commit()
+
+                #Type Relationship
+
+                #print "Hello"
+                q = 'select trackid from track where track_name="' + track_name + '"'
+                cursor.execute(q)
+                trackid = cursor.fetchone()[0]
+                q = 'select genreid from genre where genrename="' + genre_name + '"'
+                cursor.execute(q)
+                genreid = cursor.fetchone()[0]
+                type_sql=getQuery('insert_type')
+                cursor.execute('select albumid,trackid from type')
+                data=cursor.fetchall()
+                #print "World"
+                b=[albumid,trackid]
+                if getRelid(data,b):
+                    type_sql=type_sql.format(
+                        albumid=albumid,
+                        genreid=genreid,
+                        trackid=trackid
+                    )
+                    cursor.execute(type_sql)
+                    db.commit()
+
             cursor.execute("select * from track")
             showTable(cursor.fetchall())
         except Exception as e:
@@ -408,6 +524,8 @@ def filedetails(track,file):
     d= mutagen.File(file+'/'+track)
     return d
 
+def musicplayer():
+    pass
 
 if __name__ == '__main__':
     try:
@@ -417,8 +535,10 @@ if __name__ == '__main__':
         if sys.argv[1] == 'setup' :
             setup()
         if sys.argv[1] == 'insert':
-            db=insert()
+            insert()
         if sys.argv[1] == 'prompt':
             printdb()
+        if sys.argv[1] == 'musicplayer':
+            musicplayer()
     except Exception as e:
         print e
