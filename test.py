@@ -90,30 +90,30 @@ def frame():
     root.mainloop()
 
 def playSongs(songs,index):
-    global i,f,location
+    global i, f, location
     try:
-        if f.ispaused() and i==index:
+        if f.ispaused() and i == index:
             f.unpause()
         else:
             print "Hello"
-            if index <0 :
-                index=0
+            if index < 0:
+                index = 0
             if index >= len(songs):
-                index=len(songs)-1
-            i=index
-            filename =  location+"/"+str(songs[index])
+                index = len(songs) - 1
+            i = index
+            filename =str(songs[index])
             print filename
-            f= mp3play.load(filename)
+            f = mp3play.load(filename)
             f.play()
-            print f.isplaying(),f.ispaused(),f.volume(100),i
+            print filename,f.isplaying(), f.ispaused(), f.volume(100), i
             print "World"
     except:
-        if index <0 :
-            index=0
+        if index < 0:
+            index = 0
         if index >= len(songs):
-            index=len(songs)-1
-        i=index
-        filename = location + "/" + str(songs[index])
+            index = len(songs) - 1
+        i = index
+        filename =str(songs[index])
         f = mp3play.load(filename)
         f.play()
         print f.isplaying(), f.ispaused(), f.volume(100), i
@@ -165,11 +165,9 @@ def nav():
     root.config(menu=MenuBar)
 
 
-def allButton():
-    global i,songs,location,root
-    location="H:\Music\English"
-    i=0
-    songs = os.listdir(location)
+def allButton(songs):
+    global i, root
+    i = 0
     root = Tk()
     root.minsize(width=100,height=100)
     root.resizable(width=False,height=False)
@@ -283,6 +281,17 @@ def createDb():
     except Exception as e:
         print e
 
+def callDb():
+    lines=[]
+    with open('Credential.txt','r') as f:
+        lines=f.readlines()
+    username=lines[0].split('\n')[0]
+    password=lines[1].split('\n')[0]
+    host=lines[2].split('\n')[0]
+    database=lines[3].split('\n')[0]
+    db = MySQLdb.connect(host,username,password,database)
+    return db
+
 def check(db):
     try:
         print "Checking the choosen database is fit for insert track or not"
@@ -321,7 +330,6 @@ def display(track):
     button.pack()
     #back.pack()
     root.mainloop()
-
 
 def getTrack(file):
     track =[]
@@ -371,102 +379,117 @@ def query(db,file,tracks,index):
     if index == 'insert':
         try:
             for x in tracks:
-
-                cursor.execute("select max(trackid) from track")
-                data =  cursor.fetchone()
-                trackid=getid(data[0])
-                cursor.execute("select max(albumid) from album")
-                data=cursor.fetchone()
-                albumid=getid(data[0])
-                details= filedetails(x,file)
-                #print details
-                #print "hello"
-                album_name = str(details.get('TALB'))
-                track_name = str(details.get('TIT2'))
-                #print "world"
-                track_location = str(details.filename)
-                released_date = str(details.get('TDRC'))
-                track_length = int(tracklength(x,file))
-                genre_name=str(details.get('TCON'))
                 try:
-                    image=details.tags['APIC:'].data
+                    cursor.execute("select max(trackid) from track")
+                    data =  cursor.fetchone()
+                    trackid=getid(data[0])
+                    cursor.execute("select max(albumid) from album")
+                    data=cursor.fetchone()
+                    albumid=getid(data[0])
+                    details= filedetails(x,file)
+                    #print details
+                    #print "hello"
+                    album_name = str(details.get('TALB'))
+                    track_name = str(details.get('TIT2'))
+                    #print "world"
+                    track_location = str(details.filename)
+                    released_date = str(details.get('TDRC'))
+                    track_length = int(tracklength(x,file))
+                    genre_name=str(details.get('TCON'))
+                    try:
+                        image=details.tags['APIC:'].data
+                    except:
+                        pass
                 except:
-                    pass
+                    continue
 
 
                 #album Table
-                album_sql=getQuery('insert_album')
-                album_sql=album_sql.format(
-                    albumid=albumid,
-                    album_name=album_name,
-                    length=len(tracks)
-                )
-                cursor.execute("select album_name from album")
-                if getFlag(cursor.fetchall(),album_name):
-                    cursor.execute(album_sql)
-                    db.commit()
+                try:
+                    album_sql=getQuery('insert_album')
+                    album_sql=album_sql.format(
+                        albumid=albumid,
+                        album_name=album_name,
+                        length=len(tracks)
+                    )
+                    cursor.execute("select album_name from album")
+                    if getFlag(cursor.fetchall(),album_name):
+                        cursor.execute(album_sql)
+                        db.commit()
+                except:
+                    continue
 
 
                 #Track Table
-                q='select albumid from album where album_name="'+album_name+'"'
-                #print q
-                cursor.execute(q)
-                albumid=cursor.fetchone()[0]
-                insert_sql= getQuery('insert_track')
-                #sql = """insert into track (trackid,album_name,track_name,location,released_date,length,favourite ) VALUES (%d,%s,%s,%s,%s,%d,0) """,(trackid,album_name,track_name,track_location,released_date,track_length)
-                format_sql =insert_sql.format(
-                    trackid=trackid,
-                    albumid=albumid,
-                    album_name=album_name,
-                    track_name=track_name,
-                    track_location=file,
-                    released_date=released_date,
-                    track_length=track_length
-                )
-                cursor.execute("select track_name from track ")
-                data=cursor.fetchall()
-                if getFlag(data,track_name):
-                    cursor.execute(format_sql)
-                    print "Track id ", "=", trackid
-                    print format_sql
-                    db.commit()
+                try:
+                    q='select albumid from album where album_name="'+album_name+'"'
+                    #print q
+                    cursor.execute(q)
+                    albumid=cursor.fetchone()[0]
+                    insert_sql= getQuery('insert_track')
+                    #sql = """insert into track (trackid,album_name,track_name,location,released_date,length,favourite ) VALUES (%d,%s,%s,%s,%s,%d,0) """,(trackid,album_name,track_name,track_location,released_date,track_length)
+                    format_sql =insert_sql.format(
+                        trackid=trackid,
+                        albumid=albumid,
+                        album_name=album_name,
+                        track_name=x,
+                        track_location=file,
+                        released_date=released_date,
+                        track_length=track_length
+                    )
+                    cursor.execute("select track_name from track ")
+                    data=cursor.fetchall()
+
+                    if getFlag(data,track_name):
+                        cursor.execute(format_sql)
+                        print "Track id ", "=", trackid
+                        print format_sql
+                        db.commit()
+                except:
+                    continue
 
                 #Album Art Table
-                cursor.execute('select max(albumartid) from album_art')
-                artid = getid(cursor.fetchone()[0])
-                cursor.execute('select image from album_art')
-                art_sql=getQuery('insert_art')
-                if getFlag(cursor.fetchall(),'albumart/'+str(album_name)+'.jpg'):
-                    try:
-                        with open('albumart/'+str(album_name)+'.jpg','wb') as f :
-                            f.write(image)
-                        art_sql = art_sql.format(
-                            artid=artid,
-                            image='albumart/' + str(album_name)+'.jpg',
-                            albumid=albumid
-                        )
-                    except:
-                        art_sql = art_sql.format(
-                            artid=artid,
-                            image='None',
-                            albumid=albumid
-                        )
-                    cursor.execute(art_sql)
-                    db.commit()
+                try:
+                    cursor.execute('select max(albumartid) from album_art')
+                    artid = getid(cursor.fetchone()[0])
+                    cursor.execute('select image from album_art')
+                    art_sql=getQuery('insert_art')
+                    if getFlag(cursor.fetchall(),'albumart/'+str(album_name)+'.jpg'):
+                        try:
+                            with open('albumart/'+str(album_name)+'.jpg','wb') as f :
+                                f.write(image)
+                            art_sql = art_sql.format(
+                                artid=artid,
+                                image='albumart/' + str(album_name)+'.jpg',
+                                albumid=albumid
+                            )
+                        except:
+                            art_sql = art_sql.format(
+                                artid=artid,
+                                image='None',
+                                albumid=albumid
+                            )
+                        cursor.execute(art_sql)
+                        db.commit()
+                except:
+                    continue
 
 
                 #Genre Table
-                cursor.execute('select max(genreid) from genre')
-                genreid=getid(cursor.fetchone()[0])
-                genre_sql=getQuery('insert_genre')
-                cursor.execute('select genrename from genre')
-                if getFlag(cursor.fetchall(),genre_name):
-                    genre_sql=genre_sql.format(
-                        genreid=genreid,
-                        genre_name=genre_name
-                    )
-                    cursor.execute(genre_sql)
-                    db.commit()
+                try:
+                    cursor.execute('select max(genreid) from genre')
+                    genreid=getid(cursor.fetchone()[0])
+                    genre_sql=getQuery('insert_genre')
+                    cursor.execute('select genrename from genre')
+                    if getFlag(cursor.fetchall(),genre_name):
+                        genre_sql=genre_sql.format(
+                            genreid=genreid,
+                            genre_name=genre_name
+                        )
+                        cursor.execute(genre_sql)
+                        db.commit()
+                except:
+                    continue
 
                 #Type Relationship
 
@@ -497,7 +520,6 @@ def query(db,file,tracks,index):
             print  e
         return
 
-
 def insert():
     try:
         db=createDb()
@@ -524,8 +546,27 @@ def filedetails(track,file):
     d= mutagen.File(file+'/'+track)
     return d
 
+def getSong(data):
+    songs=[]
+    for x in data:
+        songs.append(x[1]+'/'+x[0])
+    return songs
+
 def musicplayer():
-    pass
+    db=callDb()
+    cursor=db.cursor()
+    cursor.execute('select version()')
+    #print cursor.fetchone()[0]
+    cursor.execute('select track_name,location from track')
+    data=cursor.fetchall()
+    songs=getSong(data)
+    allButton(songs)
+    """    f=mp3play.load(songs[1])
+        print "world"
+        f.volume(100)
+        f.play()
+        time.sleep(100)
+    """
 
 if __name__ == '__main__':
     try:
