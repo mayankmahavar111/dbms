@@ -95,18 +95,15 @@ def playSongs(songs,index):
         if f.ispaused() and i == index:
             f.unpause()
         else:
-            print "Hello"
             if index < 0:
                 index = 0
             if index >= len(songs):
                 index = len(songs) - 1
             i = index
             filename =str(songs[index])
-            print filename
             f = mp3play.load(filename)
             f.play()
             print filename,f.isplaying(), f.ispaused(), f.volume(100), i
-            print "World"
     except:
         if index < 0:
             index = 0
@@ -165,17 +162,9 @@ def nav():
     root.config(menu=MenuBar)
 
 
-<<<<<<< HEAD
-def allButton():
-    global i,songs,location,root
-    location="E:\cinema songs\Dhruva\Dhruva (2016) ~320Kbps"
-    i=0
-    songs = os.listdir(location)
-=======
 def allButton(songs):
     global i, root
     i = 0
->>>>>>> 144532df5ce29d834420bbae299ec4b1613cbe9f
     root = Tk()
     root.minsize(width=100,height=100)
     root.resizable(width=False,height=False)
@@ -271,6 +260,18 @@ def storCredentials(username,password,host,databse):
     f.write(username+'\n'+password+'\n'+host+'\n'+databse)
     f.close()
 
+def callDb():
+    lines=[]
+    with open('Credential.txt','r') as f:
+        lines=f.readlines()
+    username=lines[0].split('\n')[0]
+    password=lines[1].split('\n')[0]
+    host=lines[2].split('\n')[0]
+    database=lines[3].split('\n')[0]
+    db = MySQLdb.connect(host,username,password,database)
+    return db
+
+
 def createDb():
     print "Please Run apache and mysql from xampp before procedding"
     try:
@@ -288,17 +289,6 @@ def createDb():
         return db
     except Exception as e:
         print e
-
-def callDb():
-    lines=[]
-    with open('Credential.txt','r') as f:
-        lines=f.readlines()
-    username=lines[0].split('\n')[0]
-    password=lines[1].split('\n')[0]
-    host=lines[2].split('\n')[0]
-    database=lines[3].split('\n')[0]
-    db = MySQLdb.connect(host,username,password,database)
-    return db
 
 def check(db):
     try:
@@ -338,6 +328,7 @@ def display(track):
     button.pack()
     #back.pack()
     root.mainloop()
+
 
 def getTrack(file):
     track =[]
@@ -398,7 +389,7 @@ def query(db,file,tracks,index):
                     #print details
                     #print "hello"
                     album_name = str(details.get('TALB'))
-                    track_name = str(details.get('TIT2'))
+                    track_name = x
                     #print "world"
                     track_location = str(details.filename)
                     released_date = str(details.get('TDRC'))
@@ -408,12 +399,9 @@ def query(db,file,tracks,index):
                         image=details.tags['APIC:'].data
                     except:
                         pass
-                except:
-                    continue
 
 
-                #album Table
-                try:
+                    #album Table
                     album_sql=getQuery('insert_album')
                     album_sql=album_sql.format(
                         albumid=albumid,
@@ -424,12 +412,9 @@ def query(db,file,tracks,index):
                     if getFlag(cursor.fetchall(),album_name):
                         cursor.execute(album_sql)
                         db.commit()
-                except:
-                    continue
 
 
-                #Track Table
-                try:
+                    #Track Table
                     q='select albumid from album where album_name="'+album_name+'"'
                     #print q
                     cursor.execute(q)
@@ -440,24 +425,20 @@ def query(db,file,tracks,index):
                         trackid=trackid,
                         albumid=albumid,
                         album_name=album_name,
-                        track_name=x,
+                        track_name=track_name,
                         track_location=file,
                         released_date=released_date,
                         track_length=track_length
                     )
                     cursor.execute("select track_name from track ")
                     data=cursor.fetchall()
-
                     if getFlag(data,track_name):
                         cursor.execute(format_sql)
                         print "Track id ", "=", trackid
                         print format_sql
                         db.commit()
-                except:
-                    continue
 
-                #Album Art Table
-                try:
+                    #Album Art Table
                     cursor.execute('select max(albumartid) from album_art')
                     artid = getid(cursor.fetchone()[0])
                     cursor.execute('select image from album_art')
@@ -479,12 +460,9 @@ def query(db,file,tracks,index):
                             )
                         cursor.execute(art_sql)
                         db.commit()
-                except:
-                    continue
 
 
-                #Genre Table
-                try:
+                    #Genre Table
                     cursor.execute('select max(genreid) from genre')
                     genreid=getid(cursor.fetchone()[0])
                     genre_sql=getQuery('insert_genre')
@@ -496,37 +474,38 @@ def query(db,file,tracks,index):
                         )
                         cursor.execute(genre_sql)
                         db.commit()
+
+                    #Type Relationship
+
+                    #print "Hello"
+                    q = 'select trackid from track where track_name="' + track_name + '"'
+                    cursor.execute(q)
+                    trackid = cursor.fetchone()[0]
+                    q = 'select genreid from genre where genrename="' + genre_name + '"'
+                    cursor.execute(q)
+                    genreid = cursor.fetchone()[0]
+                    type_sql=getQuery('insert_type')
+                    cursor.execute('select albumid,trackid from type')
+                    data=cursor.fetchall()
+                    #print "World"
+                    b=[albumid,trackid]
+                    if getRelid(data,b):
+                        type_sql=type_sql.format(
+                            albumid=albumid,
+                            genreid=genreid,
+                            trackid=trackid
+                        )
+                        cursor.execute(type_sql)
+                        db.commit()
                 except:
                     continue
-
-                #Type Relationship
-
-                #print "Hello"
-                q = 'select trackid from track where track_name="' + track_name + '"'
-                cursor.execute(q)
-                trackid = cursor.fetchone()[0]
-                q = 'select genreid from genre where genrename="' + genre_name + '"'
-                cursor.execute(q)
-                genreid = cursor.fetchone()[0]
-                type_sql=getQuery('insert_type')
-                cursor.execute('select albumid,trackid from type')
-                data=cursor.fetchall()
-                #print "World"
-                b=[albumid,trackid]
-                if getRelid(data,b):
-                    type_sql=type_sql.format(
-                        albumid=albumid,
-                        genreid=genreid,
-                        trackid=trackid
-                    )
-                    cursor.execute(type_sql)
-                    db.commit()
 
             cursor.execute("select * from track")
             showTable(cursor.fetchall())
         except Exception as e:
             print  e
         return
+
 
 def insert():
     try:
@@ -561,20 +540,16 @@ def getSong(data):
     return songs
 
 def musicplayer():
-    db=callDb()
-    cursor=db.cursor()
+    db = callDb()
+    cursor = db.cursor()
     cursor.execute('select version()')
-    #print cursor.fetchone()[0]
-    cursor.execute('select track_name,location from track')
-    data=cursor.fetchall()
-    songs=getSong(data)
+    # print cursor.fetchone()[0]
+    cursor.execute('select track_name,location from track order BY rand()')
+    data = cursor.fetchall()
+    songs = getSong(data)
+    cursor.close()
+    db.close()
     allButton(songs)
-    """    f=mp3play.load(songs[1])
-        print "world"
-        f.volume(100)
-        f.play()
-        time.sleep(100)
-    """
 
 if __name__ == '__main__':
     try:
@@ -591,8 +566,3 @@ if __name__ == '__main__':
             musicplayer()
     except Exception as e:
         print e
-<<<<<<< HEAD
-        printdb()
-        #allButton()
-=======
->>>>>>> 144532df5ce29d834420bbae299ec4b1613cbe9f

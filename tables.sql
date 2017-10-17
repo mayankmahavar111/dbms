@@ -1,23 +1,23 @@
+create table if not EXISTS ALBUM(
+  AlbumId INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY ,
+  Album_Name VARCHAR(255) NOT NULL,
+  No_Of_Tracks INT UNSIGNED
+);
+
 create table if not EXISTS track(
 	TrackId int unsigned not null auto_increment primary key,
 	Album_name varchar(255) not null,
   AlbumId int UNSIGNED NOT NULL,
 	Track_name varchar(255) not null default '',
 	Location varchar(255) not null,
-	Lyrics varchar(255) not null,
 	Released_date date,
 	length int unsigned not null,
 	Favourite int unsigned not null,
   FOREIGN KEY(AlbumId) REFERENCES ALBUM(AlbumId) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
-create table ALBUM(
-  AlbumId INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY ,
-  Album_Name VARCHAR(255) NOT NULL,
-  No_Of_Tracks INT UNSIGNED
-);
 
-CREATE TABLE ALBUM_ART(
+CREATE TABLE if not EXISTS ALBUM_ART(
   AlbumArtId INT UNSIGNED NOT NULL AUTO_INCREMENT,
   Image VARCHAR(255),
   AlbumId INT UNSIGNED NOT NULL,
@@ -25,12 +25,12 @@ CREATE TABLE ALBUM_ART(
   PRIMARY KEY (AlbumArtId,AlbumId)
 );
 
-CREATE TABLE GENRE(
+CREATE TABLE if not EXISTS GENRE(
   GenreId INT  UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY ,
   GenreName VARCHAR(255) NOT NULL
 );
 
-CREATE TABLE TYPE(
+CREATE TABLE if not EXISTS TYPE(
   AlbumId INT UNSIGNED NOT NULL,
   TrackId INT UNSIGNED NOT NULL,
   GenreId INT UNSIGNED NOT NULL ,
@@ -40,16 +40,16 @@ CREATE TABLE TYPE(
   PRIMARY KEY (AlbumId,TrackId)
 );
 
-CREATE TABLE PLAYLIST(
+CREATE TABLE if not EXISTS PLAYLIST(
   PlaylistId INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY ,
   PlaylistName VARCHAR(255) NOT NULL
 );
 
-CREATE TABLE CONTAINS(
-  AlbumId INT UNSIGNED NOT NULL,
+CREATE TABLE if not EXISTS CONTAINS(
+  TrackId INT UNSIGNED NOT NULL,
   PlaylistId INT UNSIGNED NOT NULL,
-  FOREIGN KEY (AlbumId) REFERENCES ALBUM(AlbumId) ON DELETE CASCADE ON UPDATE CASCADE ,
+  FOREIGN KEY (TrackId) REFERENCES track(TrackId) ON DELETE CASCADE ON UPDATE CASCADE ,
   FOREIGN KEY (PlaylistId) REFERENCES PLAYLIST(PlaylistId) ON DELETE CASCADE ON UPDATE CASCADE ,
-  PRIMARY KEY (AlbumId,PlaylistId)
+  PRIMARY KEY (TrackId,PlaylistId)
 );
 

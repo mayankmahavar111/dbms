@@ -3,12 +3,20 @@
   <component name="ChangeListManager">
     <list default="true" id="0d858d31-b5c6-4e36-9095-671040cc30a0" name="Default" comment="">
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" />
 >>>>>>> 30ff9b1360751fcae36024d78dff706524e88484
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/sqldialects.xml" />
+=======
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/preferred-vcs.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/music.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/albumart/Aashiqui 2.jpg" afterPath="$PROJECT_DIR$/albumart/Aashiqui 2.jpg" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/albumart/None.jpg" afterPath="$PROJECT_DIR$/albumart/None.jpg" />
+>>>>>>> 144532df5ce29d834420bbae299ec4b1613cbe9f
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tables.sql" afterPath="$PROJECT_DIR$/tables.sql" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Credential.txt" afterPath="$PROJECT_DIR$/Credential.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/README.md" afterPath="$PROJECT_DIR$/README.md" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test.py" afterPath="$PROJECT_DIR$/test.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -29,10 +37,72 @@
     <option name="SHOW_EMPTY_GROUPS" value="false" />
     <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+    <PATH>
+      <PATH_ELEMENT>
+        <option name="myItemId" />
+        <option name="myItemType" value="com.intellij.database.view.DatabaseStructure$Root" />
+      </PATH_ELEMENT>
+      <PATH_ELEMENT>
+        <option name="myItemId" value="test@localhost" />
+        <option name="myItemType" value="com.intellij.database.view.DbNodeDescriptor" />
+      </PATH_ELEMENT>
+    </PATH>
+    <PATH>
+      <PATH_ELEMENT>
+        <option name="myItemId" />
+        <option name="myItemType" value="com.intellij.database.view.DatabaseStructure$Root" />
+      </PATH_ELEMENT>
+      <PATH_ELEMENT>
+        <option name="myItemId" value="test@localhost" />
+        <option name="myItemType" value="com.intellij.database.view.DbNodeDescriptor" />
+      </PATH_ELEMENT>
+      <PATH_ELEMENT>
+        <option name="myItemId" value="track" />
+        <option name="myItemType" value="com.intellij.database.view.DbNodeDescriptor" />
+      </PATH_ELEMENT>
+    </PATH>
+>>>>>>> 144532df5ce29d834420bbae299ec4b1613cbe9f
   </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="Credential.txt" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Credential.txt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="test.track" pinned="false" current-in-tab="false">
+        <entry file="dbDummy://dbtable:/c8f43438/874229e9-2fa2-4e46-b415-829d068458a6/test.track">
+          <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+            <state>
+              <filtering enabled="true" />
+            </state>
+          </provider>
+          <provider editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="keyWords" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/keyWords">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="102">
+              <caret line="14" column="18" lean-forward="false" selection-start-line="14" selection-start-column="18" selection-end-line="14" selection-end-column="18" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="test.py" pinned="false" current-in-tab="false">
 =======
     <PATH>
@@ -67,15 +137,62 @@
 >>>>>>> 30ff9b1360751fcae36024d78dff706524e88484
         <entry file="file://$PROJECT_DIR$/test.py">
           <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
             <state relative-caret-position="501">
               <caret line="269" column="15" lean-forward="false" selection-start-line="269" selection-start-column="15" selection-end-line="269" selection-end-column="15" />
+=======
+            <state relative-caret-position="-2114">
+              <caret line="118" column="59" lean-forward="false" selection-start-line="91" selection-start-column="0" selection-end-line="118" selection-end-column="59" />
+>>>>>>> 144532df5ce29d834420bbae299ec4b1613cbe9f
               <folding>
                 <element signature="e#0#14#0" expanded="true" />
+                <element signature="e#2162#2960#0" expanded="false" />
+                <element signature="e#4420#5489#0" expanded="false" />
+                <element signature="e#5515#5763#0" expanded="false" />
+                <element signature="e#5782#7216#0" expanded="false" />
+                <element signature="e#7234#7390#0" expanded="false" />
+                <element signature="e#7449#7552#0" expanded="false" />
+                <element signature="e#7574#8250#0" expanded="false" />
+                <element signature="e#8585#9491#0" expanded="false" />
+                <element signature="e#9517#9881#0" expanded="false" />
+                <element signature="e#9907#10060#0" expanded="false" />
+                <element signature="e#10084#10115#0" expanded="false" />
+                <element signature="e#10144#10223#0" expanded="false" />
+                <element signature="e#10248#10360#0" expanded="false" />
+                <element signature="e#10380#10444#0" expanded="false" />
+                <element signature="e#10467#11263#0" expanded="false" />
+                <element signature="e#11302#17274#0" expanded="false" />
+                <element signature="e#17294#17604#0" expanded="false" />
+                <element signature="e#17639#17724#0" expanded="false" />
+                <marker date="1508181948583" expanded="true" signature="8828:8903" ph="select colum... columns" />
+                <marker date="1508181948583" expanded="true" signature="10507:10605" ph="insert into album... " />
+                <marker date="1508181948583" expanded="true" signature="10653:10870" ph="insert into track... " />
+                <marker date="1508181948583" expanded="true" signature="10916:11005" ph="insert into album_art... " />
+                <marker date="1508181948583" expanded="true" signature="11053:11126" ph="insert into genre... " />
+                <marker date="1508181948583" expanded="true" signature="11173:11260" ph="insert into type... " />
+                <marker date="1508181948583" expanded="true" signature="11446:11476" ph="select max(t... track" />
+                <marker date="1508181948583" expanded="true" signature="11604:11634" ph="select max(a... album" />
+                <marker date="1508181948583" expanded="true" signature="12765:12793" ph="select album... album" />
+                <marker date="1508181948583" expanded="true" signature="13072:13115" ph="select album... album" />
+                <marker date="1508181948583" expanded="true" signature="13072:13116" ph="select album... album" />
+                <marker date="1508181948583" expanded="true" signature="13072:13131" ph="select album... album" />
+                <marker date="1508181948583" expanded="true" signature="13072:13199" ph="select album... album" />
+                <marker date="1508181948583" expanded="true" signature="13958:13986" ph="select track... track" />
+                <marker date="1508181948583" expanded="true" signature="14411:14448" ph="select max(a... album_art" />
+                <marker date="1508181948583" expanded="true" signature="14543:14570" ph="select image... album_art" />
+                <marker date="1508181948583" expanded="true" signature="15605:15635" ph="select max(g... genre" />
+                <marker date="1508181948583" expanded="true" signature="15785:15812" ph="select genre... genre" />
+                <marker date="1508181948583" expanded="true" signature="16278:16341" ph="select track... track" />
+                <marker date="1508181948583" expanded="true" signature="16445:16507" ph="select genre... genre" />
+                <marker date="1508181948583" expanded="true" signature="16671:16703" ph="select album... type" />
+                <marker date="1508181948583" expanded="true" signature="17145:17164" ph="select * fro... track" />
+                <marker date="1508181948583" expanded="true" signature="18059:18096" ph="select track... track" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
+<<<<<<< HEAD
 <<<<<<< HEAD
       <file leaf-file-name="tables.sql" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/tables.sql">
@@ -89,11 +206,88 @@
             <state relative-caret-position="0">
               <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="32" />
 >>>>>>> 30ff9b1360751fcae36024d78dff706524e88484
+=======
+      <file leaf-file-name="music.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/music.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="198">
+              <caret line="550" column="13" lean-forward="false" selection-start-line="550" selection-start-column="13" selection-end-line="550" selection-end-column="13" />
+              <folding>
+                <element signature="e#0#14#0" expanded="true" />
+                <element signature="e#1667#1975#0" expanded="false" />
+                <element signature="e#1994#2128#0" expanded="false" />
+                <element signature="e#2911#3004#0" expanded="false" />
+                <element signature="e#3021#3129#0" expanded="false" />
+                <element signature="e#3146#4312#0" expanded="false" />
+                <element signature="e#4341#5410#0" expanded="false" />
+                <element signature="e#5436#5684#0" expanded="false" />
+                <element signature="e#5703#7137#0" expanded="false" />
+                <element signature="e#7155#7311#0" expanded="false" />
+                <element signature="e#7370#7473#0" expanded="false" />
+                <element signature="e#7810#8486#0" expanded="false" />
+                <element signature="e#8507#9413#0" expanded="false" />
+                <element signature="e#9439#9803#0" expanded="false" />
+                <element signature="e#9830#9983#0" expanded="false" />
+                <element signature="e#10007#10038#0" expanded="false" />
+                <element signature="e#10067#10146#0" expanded="false" />
+                <element signature="e#10171#10283#0" expanded="false" />
+                <element signature="e#10390#11186#0" expanded="false" />
+                <element signature="e#11225#16986#0" expanded="false" />
+                <element signature="e#11353#16774#0" expanded="false" />
+                <element signature="e#17007#17317#0" expanded="false" />
+                <element signature="e#17352#17437#0" expanded="false" />
+                <element signature="e#17472#17516#0" expanded="false" />
+                <element signature="e#17541#17621#0" expanded="false" />
+                <marker date="1508186501441" expanded="true" signature="8750:8825" ph="select colum... columns" />
+                <marker date="1508186501441" expanded="true" signature="10430:10528" ph="insert into album... " />
+                <marker date="1508186501441" expanded="true" signature="10576:10793" ph="insert into track... " />
+                <marker date="1508186501441" expanded="true" signature="10839:10928" ph="insert into album_art... " />
+                <marker date="1508186501441" expanded="true" signature="10976:11049" ph="insert into genre... " />
+                <marker date="1508186501441" expanded="true" signature="11096:11183" ph="insert into type... " />
+                <marker date="1508186501441" expanded="true" signature="11369:11399" ph="select max(t... track" />
+                <marker date="1508186501441" expanded="true" signature="11527:11557" ph="select max(a... album" />
+                <marker date="1508186501441" expanded="true" signature="12595:12623" ph="select album... album" />
+                <marker date="1508186501441" expanded="true" signature="12832:12891" ph="select album... album" />
+                <marker date="1508186501441" expanded="true" signature="13727:13755" ph="select track... track" />
+                <marker date="1508186501441" expanded="true" signature="14109:14146" ph="select max(a... album_art" />
+                <marker date="1508186501441" expanded="true" signature="14241:14268" ph="select image... album_art" />
+                <marker date="1508186501441" expanded="true" signature="15233:15263" ph="select max(g... genre" />
+                <marker date="1508186501441" expanded="true" signature="15413:15440" ph="select genre... genre" />
+                <marker date="1508186501441" expanded="true" signature="15865:15928" ph="select track... track" />
+                <marker date="1508186501441" expanded="true" signature="16044:16106" ph="select genre... genre" />
+                <marker date="1508186501441" expanded="true" signature="16286:16318" ph="select album... type" />
+                <marker date="1508186501441" expanded="true" signature="16857:16876" ph="select * fro... track" />
+                <marker date="1508186501441" expanded="true" signature="17777:17830" ph="select track... track" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="README.md" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/README.md">
+          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+            <state split_layout="SPLIT">
+              <first_editor relative-caret-position="187">
+                <caret line="11" column="63" lean-forward="false" selection-start-line="11" selection-start-column="63" selection-end-line="11" selection-end-column="63" />
+                <folding />
+              </first_editor>
+              <second_editor />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="tables.sql" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/tables.sql">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="544">
+              <caret line="32" column="32" lean-forward="false" selection-start-line="32" selection-start-column="32" selection-end-line="32" selection-end-column="32" />
+>>>>>>> 144532df5ce29d834420bbae299ec4b1613cbe9f
               <folding />
             </state>
           </provider>
         </entry>
       </file>
+<<<<<<< HEAD
 <<<<<<< HEAD
       <file leaf-file-name="HospitalManagement.sql" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/../../dbms lab/HospitalManagement.sql">
@@ -107,6 +301,13 @@
             <state relative-caret-position="1037">
               <caret line="61" column="16" lean-forward="false" selection-start-line="61" selection-start-column="16" selection-end-line="61" selection-end-column="16" />
 >>>>>>> 30ff9b1360751fcae36024d78dff706524e88484
+=======
+      <file leaf-file-name="requirements.txt" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/requirements.txt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="306">
+              <caret line="18" column="16" lean-forward="false" selection-start-line="18" selection-start-column="16" selection-end-line="18" selection-end-column="16" />
+>>>>>>> 144532df5ce29d834420bbae299ec4b1613cbe9f
               <folding />
             </state>
           </provider>
@@ -114,16 +315,31 @@
       </file>
     </leaf>
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
+<<<<<<< HEAD
         <option value="$PROJECT_DIR$/tables.sql" />
         <option value="$PROJECT_DIR$/requirements.txt" />
         <option value="$PROJECT_DIR$/test.py" />
+=======
+        <option value="$PROJECT_DIR$/requirements.txt" />
+        <option value="$PROJECT_DIR$/keyWords" />
+>>>>>>> 144532df5ce29d834420bbae299ec4b1613cbe9f
         <option value="$PROJECT_DIR$/tables.sql" />
+        <option value="$PROJECT_DIR$/README.md" />
+        <option value="$PROJECT_DIR$/test.py" />
+        <option value="$PROJECT_DIR$/music.py" />
       </list>
     </option>
   </component>
@@ -136,12 +352,18 @@
   <component name="ProjectFrameBounds">
     <option name="x" value="-8" />
 <<<<<<< HEAD
+<<<<<<< HEAD
     <option name="width" value="976" />
     <option name="height" value="1038" />
 =======
     <option name="width" value="1378" />
     <option name="height" value="744" />
 >>>>>>> 30ff9b1360751fcae36024d78dff706524e88484
+=======
+    <option name="y" value="-8" />
+    <option name="width" value="1382" />
+    <option name="height" value="744" />
+>>>>>>> 144532df5ce29d834420bbae299ec4b1613cbe9f
   </component>
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="2" id="Add" />
@@ -166,7 +388,7 @@
         <subPane>
           <PATH>
             <PATH_ELEMENT>
-              <option name="myItemId" value="DBMS" />
+              <option name="myItemId" value="dbms" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -187,6 +409,12 @@
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RunManager">
+<<<<<<< HEAD
+=======
+    <configuration default="true" type="ApexTest" factoryName="Apex Test">
+      <method />
+    </configuration>
+>>>>>>> 144532df5ce29d834420bbae299ec4b1613cbe9f
     <configuration default="true" type="DjangoTestsConfigurationType" factoryName="Django tests">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -463,16 +691,23 @@
   </component>
   <component name="ToolWindowManager">
 <<<<<<< HEAD
+<<<<<<< HEAD
     <frame x="-8" y="0" width="976" height="1038" extended-state="0" />
     <editor active="true" />
+=======
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <editor active="false" />
+>>>>>>> 144532df5ce29d834420bbae299ec4b1613cbe9f
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.52444446" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17708333" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug Logs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.19494048" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3289689" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+<<<<<<< HEAD
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33218786" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
 =======
     <frame x="-8" y="0" width="1378" height="744" extended-state="0" />
@@ -487,7 +722,12 @@
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3289689" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
 >>>>>>> 30ff9b1360751fcae36024d78dff706524e88484
+=======
+      <window_info id="Execute Anonymous" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.49099836" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+>>>>>>> 144532df5ce29d834420bbae299ec4b1613cbe9f
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Salesforce" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -506,10 +746,119 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager />
+    <breakpoint-manager>
+      <option name="time" value="2" />
+    </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/Credential.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="dbDummy://dbtable:/c8f43438/874229e9-2fa2-4e46-b415-829d068458a6/test.track">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/keyWords">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="14" column="18" lean-forward="true" selection-start-line="14" selection-start-column="18" selection-end-line="14" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3995">
+          <caret line="527" column="8" lean-forward="false" selection-start-line="527" selection-start-column="8" selection-end-line="527" selection-end-column="8" />
+          <folding>
+            <element signature="e#0#14#0" expanded="true" />
+            <element signature="e#2162#2960#0" expanded="false" />
+            <element signature="e#4420#5489#0" expanded="false" />
+            <element signature="e#5515#5763#0" expanded="false" />
+            <element signature="e#5782#7216#0" expanded="false" />
+            <element signature="e#7234#7390#0" expanded="false" />
+            <element signature="e#7449#7552#0" expanded="false" />
+            <element signature="e#7574#8250#0" expanded="false" />
+            <element signature="e#8585#9491#0" expanded="false" />
+            <element signature="e#9517#9881#0" expanded="false" />
+            <element signature="e#9907#10060#0" expanded="false" />
+            <element signature="e#10084#10115#0" expanded="false" />
+            <element signature="e#10144#10223#0" expanded="false" />
+            <element signature="e#10248#10360#0" expanded="false" />
+            <element signature="e#10380#10444#0" expanded="false" />
+            <element signature="e#10467#11263#0" expanded="false" />
+            <element signature="e#11302#17274#0" expanded="false" />
+            <element signature="e#17294#17604#0" expanded="false" />
+            <element signature="e#17639#17724#0" expanded="false" />
+            <marker date="1508181948583" expanded="true" signature="8828:8903" ph="select colum... columns" />
+            <marker date="1508181948583" expanded="true" signature="10507:10605" ph="insert into album... " />
+            <marker date="1508181948583" expanded="true" signature="10653:10870" ph="insert into track... " />
+            <marker date="1508181948583" expanded="true" signature="10916:11005" ph="insert into album_art... " />
+            <marker date="1508181948583" expanded="true" signature="11053:11126" ph="insert into genre... " />
+            <marker date="1508181948583" expanded="true" signature="11173:11260" ph="insert into type... " />
+            <marker date="1508181948583" expanded="true" signature="11446:11476" ph="select max(t... track" />
+            <marker date="1508181948583" expanded="true" signature="11604:11634" ph="select max(a... album" />
+            <marker date="1508181948583" expanded="true" signature="12765:12793" ph="select album... album" />
+            <marker date="1508181948583" expanded="true" signature="13072:13115" ph="select album... album" />
+            <marker date="1508181948583" expanded="true" signature="13072:13116" ph="select album... album" />
+            <marker date="1508181948583" expanded="true" signature="13072:13131" ph="select album... album" />
+            <marker date="1508181948583" expanded="true" signature="13072:13199" ph="select album... album" />
+            <marker date="1508181948583" expanded="true" signature="13958:13986" ph="select track... track" />
+            <marker date="1508181948583" expanded="true" signature="14411:14448" ph="select max(a... album_art" />
+            <marker date="1508181948583" expanded="true" signature="14543:14570" ph="select image... album_art" />
+            <marker date="1508181948583" expanded="true" signature="15605:15635" ph="select max(g... genre" />
+            <marker date="1508181948583" expanded="true" signature="15785:15812" ph="select genre... genre" />
+            <marker date="1508181948583" expanded="true" signature="16278:16341" ph="select track... track" />
+            <marker date="1508181948583" expanded="true" signature="16445:16507" ph="select genre... genre" />
+            <marker date="1508181948583" expanded="true" signature="16671:16703" ph="select album... type" />
+            <marker date="1508181948583" expanded="true" signature="17145:17164" ph="select * fro... track" />
+            <marker date="1508181948583" expanded="true" signature="18059:18096" ph="select track... track" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="0">
+            <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+            <folding />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tables.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="544">
+          <caret line="32" column="32" lean-forward="false" selection-start-line="32" selection-start-column="32" selection-end-line="32" selection-end-column="32" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/requirements.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="18" column="16" lean-forward="false" selection-start-line="18" selection-start-column="16" selection-end-line="18" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/test.py">
       <provider selected="true" editor-type-id="text-editor">
 <<<<<<< HEAD
@@ -521,10 +870,52 @@
 >>>>>>> 30ff9b1360751fcae36024d78dff706524e88484
           <folding>
             <element signature="e#0#14#0" expanded="true" />
+            <element signature="e#2162#2960#0" expanded="false" />
+            <element signature="e#4420#5489#0" expanded="false" />
+            <element signature="e#5515#5763#0" expanded="false" />
+            <element signature="e#5782#7216#0" expanded="false" />
+            <element signature="e#7234#7390#0" expanded="false" />
+            <element signature="e#7449#7552#0" expanded="false" />
+            <element signature="e#7574#8250#0" expanded="false" />
+            <element signature="e#8585#9491#0" expanded="false" />
+            <element signature="e#9517#9881#0" expanded="false" />
+            <element signature="e#9907#10060#0" expanded="false" />
+            <element signature="e#10084#10115#0" expanded="false" />
+            <element signature="e#10144#10223#0" expanded="false" />
+            <element signature="e#10248#10360#0" expanded="false" />
+            <element signature="e#10380#10444#0" expanded="false" />
+            <element signature="e#10467#11263#0" expanded="false" />
+            <element signature="e#11302#17274#0" expanded="false" />
+            <element signature="e#17294#17604#0" expanded="false" />
+            <element signature="e#17639#17724#0" expanded="false" />
+            <marker date="1508181948583" expanded="true" signature="8828:8903" ph="select colum... columns" />
+            <marker date="1508181948583" expanded="true" signature="10507:10605" ph="insert into album... " />
+            <marker date="1508181948583" expanded="true" signature="10653:10870" ph="insert into track... " />
+            <marker date="1508181948583" expanded="true" signature="10916:11005" ph="insert into album_art... " />
+            <marker date="1508181948583" expanded="true" signature="11053:11126" ph="insert into genre... " />
+            <marker date="1508181948583" expanded="true" signature="11173:11260" ph="insert into type... " />
+            <marker date="1508181948583" expanded="true" signature="11446:11476" ph="select max(t... track" />
+            <marker date="1508181948583" expanded="true" signature="11604:11634" ph="select max(a... album" />
+            <marker date="1508181948583" expanded="true" signature="12765:12793" ph="select album... album" />
+            <marker date="1508181948583" expanded="true" signature="13072:13115" ph="select album... album" />
+            <marker date="1508181948583" expanded="true" signature="13072:13116" ph="select album... album" />
+            <marker date="1508181948583" expanded="true" signature="13072:13131" ph="select album... album" />
+            <marker date="1508181948583" expanded="true" signature="13072:13199" ph="select album... album" />
+            <marker date="1508181948583" expanded="true" signature="13958:13986" ph="select track... track" />
+            <marker date="1508181948583" expanded="true" signature="14411:14448" ph="select max(a... album_art" />
+            <marker date="1508181948583" expanded="true" signature="14543:14570" ph="select image... album_art" />
+            <marker date="1508181948583" expanded="true" signature="15605:15635" ph="select max(g... genre" />
+            <marker date="1508181948583" expanded="true" signature="15785:15812" ph="select genre... genre" />
+            <marker date="1508181948583" expanded="true" signature="16278:16341" ph="select track... track" />
+            <marker date="1508181948583" expanded="true" signature="16445:16507" ph="select genre... genre" />
+            <marker date="1508181948583" expanded="true" signature="16671:16703" ph="select album... type" />
+            <marker date="1508181948583" expanded="true" signature="17145:17164" ph="select * fro... track" />
+            <marker date="1508181948583" expanded="true" signature="18059:18096" ph="select track... track" />
           </folding>
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
 <<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/test.py">
       <provider selected="true" editor-type-id="text-editor">
@@ -586,25 +977,685 @@
         <state relative-caret-position="501">
           <caret line="269" column="15" lean-forward="false" selection-start-line="269" selection-start-column="15" selection-end-line="269" selection-end-column="15" />
 >>>>>>> 30ff9b1360751fcae36024d78dff706524e88484
-          <folding>
-            <element signature="e#0#14#0" expanded="true" />
-          </folding>
+=======
+    <entry file="file://$PROJECT_DIR$/Credential.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../../dbms lab/HospitalManagement.sql">
+    <entry file="dbDummy://dbtable:/c8f43438/874229e9-2fa2-4e46-b415-829d068458a6/test.track">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/keyWords">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2222">
-          <caret line="13" column="36" lean-forward="false" selection-start-line="13" selection-start-column="35" selection-end-line="13" selection-end-column="36" />
+        <state relative-caret-position="442">
+          <caret line="26" column="22" lean-forward="false" selection-start-line="26" selection-start-column="22" selection-end-line="26" selection-end-column="22" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/tables.sql">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="704">
-          <caret line="53" column="2" lean-forward="false" selection-start-line="53" selection-start-column="2" selection-end-line="53" selection-end-column="2" />
+        <state relative-caret-position="153">
+          <caret line="9" column="0" lean-forward="false" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/requirements.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="18" column="16" lean-forward="false" selection-start-line="18" selection-start-column="16" selection-end-line="18" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4777">
+          <caret line="281" column="62" lean-forward="false" selection-start-line="281" selection-start-column="62" selection-end-line="281" selection-end-column="62" />
+>>>>>>> 144532df5ce29d834420bbae299ec4b1613cbe9f
+          <folding>
+            <element signature="e#0#14#0" expanded="true" />
+            <element signature="e#2162#2960#0" expanded="false" />
+            <element signature="e#4420#5489#0" expanded="false" />
+            <element signature="e#5515#5763#0" expanded="false" />
+            <element signature="e#5782#7216#0" expanded="false" />
+            <element signature="e#7234#7390#0" expanded="false" />
+            <element signature="e#7449#7552#0" expanded="false" />
+            <element signature="e#7574#8250#0" expanded="false" />
+            <element signature="e#8585#9491#0" expanded="false" />
+            <element signature="e#9517#9881#0" expanded="false" />
+            <element signature="e#9907#10060#0" expanded="false" />
+            <element signature="e#10084#10115#0" expanded="false" />
+            <element signature="e#10144#10223#0" expanded="false" />
+            <element signature="e#10248#10360#0" expanded="false" />
+            <element signature="e#10380#10444#0" expanded="false" />
+            <element signature="e#10467#11263#0" expanded="false" />
+            <element signature="e#11302#17274#0" expanded="false" />
+            <element signature="e#17294#17604#0" expanded="false" />
+            <element signature="e#17639#17724#0" expanded="false" />
+            <marker date="1508181948583" expanded="true" signature="8828:8903" ph="select colum... columns" />
+            <marker date="1508181948583" expanded="true" signature="10507:10605" ph="insert into album... " />
+            <marker date="1508181948583" expanded="true" signature="10653:10870" ph="insert into track... " />
+            <marker date="1508181948583" expanded="true" signature="10916:11005" ph="insert into album_art... " />
+            <marker date="1508181948583" expanded="true" signature="11053:11126" ph="insert into genre... " />
+            <marker date="1508181948583" expanded="true" signature="11173:11260" ph="insert into type... " />
+            <marker date="1508181948583" expanded="true" signature="11446:11476" ph="select max(t... track" />
+            <marker date="1508181948583" expanded="true" signature="11604:11634" ph="select max(a... album" />
+            <marker date="1508181948583" expanded="true" signature="12765:12793" ph="select album... album" />
+            <marker date="1508181948583" expanded="true" signature="13072:13115" ph="select album... album" />
+            <marker date="1508181948583" expanded="true" signature="13072:13116" ph="select album... album" />
+            <marker date="1508181948583" expanded="true" signature="13072:13131" ph="select album... album" />
+            <marker date="1508181948583" expanded="true" signature="13072:13199" ph="select album... album" />
+            <marker date="1508181948583" expanded="true" signature="13958:13986" ph="select track... track" />
+            <marker date="1508181948583" expanded="true" signature="14411:14448" ph="select max(a... album_art" />
+            <marker date="1508181948583" expanded="true" signature="14543:14570" ph="select image... album_art" />
+            <marker date="1508181948583" expanded="true" signature="15605:15635" ph="select max(g... genre" />
+            <marker date="1508181948583" expanded="true" signature="15785:15812" ph="select genre... genre" />
+            <marker date="1508181948583" expanded="true" signature="16278:16341" ph="select track... track" />
+            <marker date="1508181948583" expanded="true" signature="16445:16507" ph="select genre... genre" />
+            <marker date="1508181948583" expanded="true" signature="16671:16703" ph="select album... type" />
+            <marker date="1508181948583" expanded="true" signature="17145:17164" ph="select * fro... track" />
+            <marker date="1508181948583" expanded="true" signature="18059:18096" ph="select track... track" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Credential.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="dbDummy://dbtable:/c8f43438/874229e9-2fa2-4e46-b415-829d068458a6/test.track">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/keyWords">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="442">
+          <caret line="26" column="22" lean-forward="false" selection-start-line="26" selection-start-column="22" selection-end-line="26" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tables.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="9" column="0" lean-forward="false" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/requirements.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="18" column="16" lean-forward="false" selection-start-line="18" selection-start-column="16" selection-end-line="18" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#14#0" expanded="true" />
+            <element signature="e#2162#2960#0" expanded="false" />
+            <element signature="e#4420#5489#0" expanded="false" />
+            <element signature="e#5515#5763#0" expanded="false" />
+            <element signature="e#5782#7216#0" expanded="false" />
+            <element signature="e#7234#7390#0" expanded="false" />
+            <element signature="e#7449#7552#0" expanded="false" />
+            <element signature="e#7574#8250#0" expanded="false" />
+            <element signature="e#8585#9491#0" expanded="false" />
+            <element signature="e#9517#9881#0" expanded="false" />
+            <element signature="e#9907#10060#0" expanded="false" />
+            <element signature="e#10084#10115#0" expanded="false" />
+            <element signature="e#10144#10223#0" expanded="false" />
+            <element signature="e#10248#10360#0" expanded="false" />
+            <element signature="e#10380#10444#0" expanded="false" />
+            <element signature="e#10467#11263#0" expanded="false" />
+            <element signature="e#11302#17274#0" expanded="false" />
+            <element signature="e#17294#17604#0" expanded="false" />
+            <element signature="e#17639#17724#0" expanded="false" />
+            <marker date="1508181948583" expanded="true" signature="8828:8903" ph="select colum... columns" />
+            <marker date="1508181948583" expanded="true" signature="10507:10605" ph="insert into album... " />
+            <marker date="1508181948583" expanded="true" signature="10653:10870" ph="insert into track... " />
+            <marker date="1508181948583" expanded="true" signature="10916:11005" ph="insert into album_art... " />
+            <marker date="1508181948583" expanded="true" signature="11053:11126" ph="insert into genre... " />
+            <marker date="1508181948583" expanded="true" signature="11173:11260" ph="insert into type... " />
+            <marker date="1508181948583" expanded="true" signature="11446:11476" ph="select max(t... track" />
+            <marker date="1508181948583" expanded="true" signature="11604:11634" ph="select max(a... album" />
+            <marker date="1508181948583" expanded="true" signature="12765:12793" ph="select album... album" />
+            <marker date="1508181948583" expanded="true" signature="13072:13115" ph="select album... album" />
+            <marker date="1508181948583" expanded="true" signature="13072:13116" ph="select album... album" />
+            <marker date="1508181948583" expanded="true" signature="13072:13131" ph="select album... album" />
+            <marker date="1508181948583" expanded="true" signature="13072:13199" ph="select album... album" />
+            <marker date="1508181948583" expanded="true" signature="13958:13986" ph="select track... track" />
+            <marker date="1508181948583" expanded="true" signature="14411:14448" ph="select max(a... album_art" />
+            <marker date="1508181948583" expanded="true" signature="14543:14570" ph="select image... album_art" />
+            <marker date="1508181948583" expanded="true" signature="15605:15635" ph="select max(g... genre" />
+            <marker date="1508181948583" expanded="true" signature="15785:15812" ph="select genre... genre" />
+            <marker date="1508181948583" expanded="true" signature="16278:16341" ph="select track... track" />
+            <marker date="1508181948583" expanded="true" signature="16445:16507" ph="select genre... genre" />
+            <marker date="1508181948583" expanded="true" signature="16671:16703" ph="select album... type" />
+            <marker date="1508181948583" expanded="true" signature="17145:17164" ph="select * fro... track" />
+            <marker date="1508181948583" expanded="true" signature="18059:18096" ph="select track... track" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="dbDummy://dbtable:/c8f43438/874229e9-2fa2-4e46-b415-829d068458a6/test.track">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/keyWords">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="442">
+          <caret line="26" column="22" lean-forward="true" selection-start-line="26" selection-start-column="22" selection-end-line="26" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tables.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="9" column="0" lean-forward="true" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/requirements.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="18" column="16" lean-forward="false" selection-start-line="18" selection-start-column="16" selection-end-line="18" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="5083">
+          <caret line="318" column="13" lean-forward="false" selection-start-line="318" selection-start-column="13" selection-end-line="318" selection-end-column="13" />
+          <folding>
+            <element signature="e#0#14#0" expanded="true" />
+            <element signature="e#2162#2960#0" expanded="false" />
+            <element signature="e#4420#5489#0" expanded="false" />
+            <element signature="e#5515#5763#0" expanded="false" />
+            <element signature="e#5782#7216#0" expanded="false" />
+            <element signature="e#7234#7390#0" expanded="false" />
+            <element signature="e#7449#7552#0" expanded="false" />
+            <element signature="e#7574#8250#0" expanded="false" />
+            <element signature="e#8585#9491#0" expanded="false" />
+            <element signature="e#9517#9881#0" expanded="false" />
+            <element signature="e#9907#10060#0" expanded="false" />
+            <element signature="e#10084#10115#0" expanded="false" />
+            <element signature="e#10144#10223#0" expanded="false" />
+            <element signature="e#10248#10360#0" expanded="false" />
+            <element signature="e#10380#10444#0" expanded="false" />
+            <element signature="e#10467#11263#0" expanded="false" />
+            <element signature="e#11302#17274#0" expanded="false" />
+            <element signature="e#17294#17604#0" expanded="false" />
+            <element signature="e#17639#17724#0" expanded="false" />
+            <marker date="1508181948583" expanded="true" signature="8828:8903" ph="select colum... columns" />
+            <marker date="1508181948583" expanded="true" signature="10507:10605" ph="insert into album... " />
+            <marker date="1508181948583" expanded="true" signature="10653:10870" ph="insert into track... " />
+            <marker date="1508181948583" expanded="true" signature="10916:11005" ph="insert into album_art... " />
+            <marker date="1508181948583" expanded="true" signature="11053:11126" ph="insert into genre... " />
+            <marker date="1508181948583" expanded="true" signature="11173:11260" ph="insert into type... " />
+            <marker date="1508181948583" expanded="true" signature="11446:11476" ph="select max(t... track" />
+            <marker date="1508181948583" expanded="true" signature="11604:11634" ph="select max(a... album" />
+            <marker date="1508181948583" expanded="true" signature="12765:12793" ph="select album... album" />
+            <marker date="1508181948583" expanded="true" signature="13072:13115" ph="select album... album" />
+            <marker date="1508181948583" expanded="true" signature="13072:13116" ph="select album... album" />
+            <marker date="1508181948583" expanded="true" signature="13072:13131" ph="select album... album" />
+            <marker date="1508181948583" expanded="true" signature="13072:13199" ph="select album... album" />
+            <marker date="1508181948583" expanded="true" signature="13958:13986" ph="select track... track" />
+            <marker date="1508181948583" expanded="true" signature="14411:14448" ph="select max(a... album_art" />
+            <marker date="1508181948583" expanded="true" signature="14543:14570" ph="select image... album_art" />
+            <marker date="1508181948583" expanded="true" signature="15605:15635" ph="select max(g... genre" />
+            <marker date="1508181948583" expanded="true" signature="15785:15812" ph="select genre... genre" />
+            <marker date="1508181948583" expanded="true" signature="16278:16341" ph="select track... track" />
+            <marker date="1508181948583" expanded="true" signature="16445:16507" ph="select genre... genre" />
+            <marker date="1508181948583" expanded="true" signature="16671:16703" ph="select album... type" />
+            <marker date="1508181948583" expanded="true" signature="17145:17164" ph="select * fro... track" />
+            <marker date="1508181948583" expanded="true" signature="18059:18096" ph="select track... track" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tables.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="21" lean-forward="false" selection-start-line="6" selection-start-column="21" selection-end-line="6" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/requirements.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="18" column="16" lean-forward="false" selection-start-line="18" selection-start-column="16" selection-end-line="18" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#14#0" expanded="true" />
+            <element signature="e#2162#2960#0" expanded="false" />
+            <element signature="e#4420#5489#0" expanded="false" />
+            <element signature="e#5515#5763#0" expanded="false" />
+            <element signature="e#5782#7216#0" expanded="false" />
+            <element signature="e#7234#7390#0" expanded="false" />
+            <element signature="e#7449#7552#0" expanded="false" />
+            <element signature="e#7574#8250#0" expanded="false" />
+            <element signature="e#8585#9491#0" expanded="false" />
+            <element signature="e#9517#9881#0" expanded="false" />
+            <element signature="e#9907#10060#0" expanded="false" />
+            <element signature="e#10084#10115#0" expanded="false" />
+            <element signature="e#10144#10223#0" expanded="false" />
+            <element signature="e#10248#10360#0" expanded="false" />
+            <element signature="e#10380#10444#0" expanded="false" />
+            <element signature="e#10467#11263#0" expanded="false" />
+            <element signature="e#11302#17274#0" expanded="false" />
+            <element signature="e#17294#17604#0" expanded="false" />
+            <element signature="e#17639#17724#0" expanded="false" />
+            <marker date="1508181948583" expanded="true" signature="8828:8903" ph="select colum... columns" />
+            <marker date="1508181948583" expanded="true" signature="10507:10605" ph="insert into album... " />
+            <marker date="1508181948583" expanded="true" signature="10653:10870" ph="insert into track... " />
+            <marker date="1508181948583" expanded="true" signature="10916:11005" ph="insert into album_art... " />
+            <marker date="1508181948583" expanded="true" signature="11053:11126" ph="insert into genre... " />
+            <marker date="1508181948583" expanded="true" signature="11173:11260" ph="insert into type... " />
+            <marker date="1508181948583" expanded="true" signature="11446:11476" ph="select max(t... track" />
+            <marker date="1508181948583" expanded="true" signature="11604:11634" ph="select max(a... album" />
+            <marker date="1508181948583" expanded="true" signature="12765:12793" ph="select album... album" />
+            <marker date="1508181948583" expanded="true" signature="13072:13115" ph="select album... album" />
+            <marker date="1508181948583" expanded="true" signature="13072:13116" ph="select album... album" />
+            <marker date="1508181948583" expanded="true" signature="13072:13131" ph="select album... album" />
+            <marker date="1508181948583" expanded="true" signature="13072:13199" ph="select album... album" />
+            <marker date="1508181948583" expanded="true" signature="13958:13986" ph="select track... track" />
+            <marker date="1508181948583" expanded="true" signature="14411:14448" ph="select max(a... album_art" />
+            <marker date="1508181948583" expanded="true" signature="14543:14570" ph="select image... album_art" />
+            <marker date="1508181948583" expanded="true" signature="15605:15635" ph="select max(g... genre" />
+            <marker date="1508181948583" expanded="true" signature="15785:15812" ph="select genre... genre" />
+            <marker date="1508181948583" expanded="true" signature="16278:16341" ph="select track... track" />
+            <marker date="1508181948583" expanded="true" signature="16445:16507" ph="select genre... genre" />
+            <marker date="1508181948583" expanded="true" signature="16671:16703" ph="select album... type" />
+            <marker date="1508181948583" expanded="true" signature="17145:17164" ph="select * fro... track" />
+            <marker date="1508181948583" expanded="true" signature="18059:18096" ph="select track... track" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tables.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" column="11" lean-forward="false" selection-start-line="7" selection-start-column="2" selection-end-line="7" selection-end-column="11" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/requirements.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="18" column="16" lean-forward="true" selection-start-line="18" selection-start-column="16" selection-end-line="18" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#14#0" expanded="true" />
+            <element signature="e#2162#2960#0" expanded="false" />
+            <element signature="e#4420#5489#0" expanded="false" />
+            <element signature="e#5515#5763#0" expanded="false" />
+            <element signature="e#5782#7216#0" expanded="false" />
+            <element signature="e#7234#7390#0" expanded="false" />
+            <element signature="e#7449#7552#0" expanded="false" />
+            <element signature="e#7574#8250#0" expanded="false" />
+            <element signature="e#8585#9491#0" expanded="false" />
+            <element signature="e#9517#9881#0" expanded="false" />
+            <element signature="e#9907#10060#0" expanded="false" />
+            <element signature="e#10084#10115#0" expanded="false" />
+            <element signature="e#10144#10223#0" expanded="false" />
+            <element signature="e#10248#10360#0" expanded="false" />
+            <element signature="e#10380#10444#0" expanded="false" />
+            <element signature="e#10467#11263#0" expanded="false" />
+            <element signature="e#11302#17274#0" expanded="false" />
+            <element signature="e#17294#17604#0" expanded="false" />
+            <element signature="e#17639#17724#0" expanded="false" />
+            <marker date="1508181948583" expanded="true" signature="8828:8903" ph="select colum... columns" />
+            <marker date="1508181948583" expanded="true" signature="10507:10605" ph="insert into album... " />
+            <marker date="1508181948583" expanded="true" signature="10653:10870" ph="insert into track... " />
+            <marker date="1508181948583" expanded="true" signature="10916:11005" ph="insert into album_art... " />
+            <marker date="1508181948583" expanded="true" signature="11053:11126" ph="insert into genre... " />
+            <marker date="1508181948583" expanded="true" signature="11173:11260" ph="insert into type... " />
+            <marker date="1508181948583" expanded="true" signature="11446:11476" ph="select max(t... track" />
+            <marker date="1508181948583" expanded="true" signature="11604:11634" ph="select max(a... album" />
+            <marker date="1508181948583" expanded="true" signature="12765:12793" ph="select album... album" />
+            <marker date="1508181948583" expanded="true" signature="13072:13115" ph="select album... album" />
+            <marker date="1508181948583" expanded="true" signature="13072:13116" ph="select album... album" />
+            <marker date="1508181948583" expanded="true" signature="13072:13131" ph="select album... album" />
+            <marker date="1508181948583" expanded="true" signature="13072:13199" ph="select album... album" />
+            <marker date="1508181948583" expanded="true" signature="13958:13986" ph="select track... track" />
+            <marker date="1508181948583" expanded="true" signature="14411:14448" ph="select max(a... album_art" />
+            <marker date="1508181948583" expanded="true" signature="14543:14570" ph="select image... album_art" />
+            <marker date="1508181948583" expanded="true" signature="15605:15635" ph="select max(g... genre" />
+            <marker date="1508181948583" expanded="true" signature="15785:15812" ph="select genre... genre" />
+            <marker date="1508181948583" expanded="true" signature="16278:16341" ph="select track... track" />
+            <marker date="1508181948583" expanded="true" signature="16445:16507" ph="select genre... genre" />
+            <marker date="1508181948583" expanded="true" signature="16671:16703" ph="select album... type" />
+            <marker date="1508181948583" expanded="true" signature="17145:17164" ph="select * fro... track" />
+            <marker date="1508181948583" expanded="true" signature="18059:18096" ph="select track... track" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tables.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="32" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/requirements.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1037">
+          <caret line="61" column="16" lean-forward="false" selection-start-line="61" selection-start-column="16" selection-end-line="61" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4403">
+          <caret line="269" column="15" lean-forward="false" selection-start-line="269" selection-start-column="15" selection-end-line="269" selection-end-column="15" />
+          <folding>
+            <element signature="e#0#14#0" expanded="true" />
+            <element signature="e#2162#2960#0" expanded="false" />
+            <element signature="e#4420#5489#0" expanded="false" />
+            <element signature="e#5515#5763#0" expanded="false" />
+            <element signature="e#5782#7216#0" expanded="false" />
+            <element signature="e#7234#7390#0" expanded="false" />
+            <element signature="e#7449#7552#0" expanded="false" />
+            <element signature="e#7574#8250#0" expanded="false" />
+            <element signature="e#8585#9491#0" expanded="false" />
+            <element signature="e#9517#9881#0" expanded="false" />
+            <element signature="e#9907#10060#0" expanded="false" />
+            <element signature="e#10084#10115#0" expanded="false" />
+            <element signature="e#10144#10223#0" expanded="false" />
+            <element signature="e#10248#10360#0" expanded="false" />
+            <element signature="e#10380#10444#0" expanded="false" />
+            <element signature="e#10467#11263#0" expanded="false" />
+            <element signature="e#11302#17274#0" expanded="false" />
+            <element signature="e#17294#17604#0" expanded="false" />
+            <element signature="e#17639#17724#0" expanded="false" />
+            <marker date="1508181948583" expanded="true" signature="8828:8903" ph="select colum... columns" />
+            <marker date="1508181948583" expanded="true" signature="10507:10605" ph="insert into album... " />
+            <marker date="1508181948583" expanded="true" signature="10653:10870" ph="insert into track... " />
+            <marker date="1508181948583" expanded="true" signature="10916:11005" ph="insert into album_art... " />
+            <marker date="1508181948583" expanded="true" signature="11053:11126" ph="insert into genre... " />
+            <marker date="1508181948583" expanded="true" signature="11173:11260" ph="insert into type... " />
+            <marker date="1508181948583" expanded="true" signature="11446:11476" ph="select max(t... track" />
+            <marker date="1508181948583" expanded="true" signature="11604:11634" ph="select max(a... album" />
+            <marker date="1508181948583" expanded="true" signature="12765:12793" ph="select album... album" />
+            <marker date="1508181948583" expanded="true" signature="13072:13115" ph="select album... album" />
+            <marker date="1508181948583" expanded="true" signature="13072:13116" ph="select album... album" />
+            <marker date="1508181948583" expanded="true" signature="13072:13131" ph="select album... album" />
+            <marker date="1508181948583" expanded="true" signature="13072:13199" ph="select album... album" />
+            <marker date="1508181948583" expanded="true" signature="13958:13986" ph="select track... track" />
+            <marker date="1508181948583" expanded="true" signature="14411:14448" ph="select max(a... album_art" />
+            <marker date="1508181948583" expanded="true" signature="14543:14570" ph="select image... album_art" />
+            <marker date="1508181948583" expanded="true" signature="15605:15635" ph="select max(g... genre" />
+            <marker date="1508181948583" expanded="true" signature="15785:15812" ph="select genre... genre" />
+            <marker date="1508181948583" expanded="true" signature="16278:16341" ph="select track... track" />
+            <marker date="1508181948583" expanded="true" signature="16445:16507" ph="select genre... genre" />
+            <marker date="1508181948583" expanded="true" signature="16671:16703" ph="select album... type" />
+            <marker date="1508181948583" expanded="true" signature="17145:17164" ph="select * fro... track" />
+            <marker date="1508181948583" expanded="true" signature="18059:18096" ph="select track... track" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tables.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" column="31" lean-forward="false" selection-start-line="7" selection-start-column="31" selection-end-line="7" selection-end-column="31" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="dbDummy://dbtable:/c8f43438/874229e9-2fa2-4e46-b415-829d068458a6/test.track">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/requirements.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="18" column="16" lean-forward="false" selection-start-line="18" selection-start-column="16" selection-end-line="18" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="dbDummy://dbtable:/c8f43438/874229e9-2fa2-4e46-b415-829d068458a6/test.track">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Credential.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/albumart/2.jpg" />
+    <entry file="file://$PROJECT_DIR$/albumart/1.jpg" />
+    <entry file="file://$PROJECT_DIR$/albumart/None.jpg">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/albumart/(ABCD) - Sparkshell.com.jpg">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="187">
+            <caret line="11" column="63" lean-forward="false" selection-start-line="11" selection-start-column="63" selection-end-line="11" selection-end-column="63" />
+            <folding />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/keyWords">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="14" column="18" lean-forward="false" selection-start-line="14" selection-start-column="18" selection-end-line="14" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tables.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="544">
+          <caret line="32" column="32" lean-forward="false" selection-start-line="32" selection-start-column="32" selection-end-line="32" selection-end-column="32" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2114">
+          <caret line="118" column="59" lean-forward="false" selection-start-line="91" selection-start-column="0" selection-end-line="118" selection-end-column="59" />
+          <folding>
+            <element signature="e#0#14#0" expanded="true" />
+            <element signature="e#2162#2960#0" expanded="false" />
+            <element signature="e#4420#5489#0" expanded="false" />
+            <element signature="e#5515#5763#0" expanded="false" />
+            <element signature="e#5782#7216#0" expanded="false" />
+            <element signature="e#7234#7390#0" expanded="false" />
+            <element signature="e#7449#7552#0" expanded="false" />
+            <element signature="e#7574#8250#0" expanded="false" />
+            <element signature="e#8585#9491#0" expanded="false" />
+            <element signature="e#9517#9881#0" expanded="false" />
+            <element signature="e#9907#10060#0" expanded="false" />
+            <element signature="e#10084#10115#0" expanded="false" />
+            <element signature="e#10144#10223#0" expanded="false" />
+            <element signature="e#10248#10360#0" expanded="false" />
+            <element signature="e#10380#10444#0" expanded="false" />
+            <element signature="e#10467#11263#0" expanded="false" />
+            <element signature="e#11302#17274#0" expanded="false" />
+            <element signature="e#17294#17604#0" expanded="false" />
+            <element signature="e#17639#17724#0" expanded="false" />
+            <marker date="1508181948583" expanded="true" signature="8828:8903" ph="select colum... columns" />
+            <marker date="1508181948583" expanded="true" signature="10507:10605" ph="insert into album... " />
+            <marker date="1508181948583" expanded="true" signature="10653:10870" ph="insert into track... " />
+            <marker date="1508181948583" expanded="true" signature="10916:11005" ph="insert into album_art... " />
+            <marker date="1508181948583" expanded="true" signature="11053:11126" ph="insert into genre... " />
+            <marker date="1508181948583" expanded="true" signature="11173:11260" ph="insert into type... " />
+            <marker date="1508181948583" expanded="true" signature="11446:11476" ph="select max(t... track" />
+            <marker date="1508181948583" expanded="true" signature="11604:11634" ph="select max(a... album" />
+            <marker date="1508181948583" expanded="true" signature="12765:12793" ph="select album... album" />
+            <marker date="1508181948583" expanded="true" signature="13072:13115" ph="select album... album" />
+            <marker date="1508181948583" expanded="true" signature="13072:13116" ph="select album... album" />
+            <marker date="1508181948583" expanded="true" signature="13072:13131" ph="select album... album" />
+            <marker date="1508181948583" expanded="true" signature="13072:13199" ph="select album... album" />
+            <marker date="1508181948583" expanded="true" signature="13958:13986" ph="select track... track" />
+            <marker date="1508181948583" expanded="true" signature="14411:14448" ph="select max(a... album_art" />
+            <marker date="1508181948583" expanded="true" signature="14543:14570" ph="select image... album_art" />
+            <marker date="1508181948583" expanded="true" signature="15605:15635" ph="select max(g... genre" />
+            <marker date="1508181948583" expanded="true" signature="15785:15812" ph="select genre... genre" />
+            <marker date="1508181948583" expanded="true" signature="16278:16341" ph="select track... track" />
+            <marker date="1508181948583" expanded="true" signature="16445:16507" ph="select genre... genre" />
+            <marker date="1508181948583" expanded="true" signature="16671:16703" ph="select album... type" />
+            <marker date="1508181948583" expanded="true" signature="17145:17164" ph="select * fro... track" />
+            <marker date="1508181948583" expanded="true" signature="18059:18096" ph="select track... track" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/music.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="198">
+          <caret line="550" column="13" lean-forward="false" selection-start-line="550" selection-start-column="13" selection-end-line="550" selection-end-column="13" />
+          <folding>
+            <element signature="e#0#14#0" expanded="true" />
+            <element signature="e#1667#1975#0" expanded="false" />
+            <element signature="e#1994#2128#0" expanded="false" />
+            <element signature="e#2911#3004#0" expanded="false" />
+            <element signature="e#3021#3129#0" expanded="false" />
+            <element signature="e#3146#4312#0" expanded="false" />
+            <element signature="e#4341#5410#0" expanded="false" />
+            <element signature="e#5436#5684#0" expanded="false" />
+            <element signature="e#5703#7137#0" expanded="false" />
+            <element signature="e#7155#7311#0" expanded="false" />
+            <element signature="e#7370#7473#0" expanded="false" />
+            <element signature="e#7810#8486#0" expanded="false" />
+            <element signature="e#8507#9413#0" expanded="false" />
+            <element signature="e#9439#9803#0" expanded="false" />
+            <element signature="e#9830#9983#0" expanded="false" />
+            <element signature="e#10007#10038#0" expanded="false" />
+            <element signature="e#10067#10146#0" expanded="false" />
+            <element signature="e#10171#10283#0" expanded="false" />
+            <element signature="e#10390#11186#0" expanded="false" />
+            <element signature="e#11225#16986#0" expanded="false" />
+            <element signature="e#11353#16774#0" expanded="false" />
+            <element signature="e#17007#17317#0" expanded="false" />
+            <element signature="e#17352#17437#0" expanded="false" />
+            <element signature="e#17472#17516#0" expanded="false" />
+            <element signature="e#17541#17621#0" expanded="false" />
+            <marker date="1508186501441" expanded="true" signature="8750:8825" ph="select colum... columns" />
+            <marker date="1508186501441" expanded="true" signature="10430:10528" ph="insert into album... " />
+            <marker date="1508186501441" expanded="true" signature="10576:10793" ph="insert into track... " />
+            <marker date="1508186501441" expanded="true" signature="10839:10928" ph="insert into album_art... " />
+            <marker date="1508186501441" expanded="true" signature="10976:11049" ph="insert into genre... " />
+            <marker date="1508186501441" expanded="true" signature="11096:11183" ph="insert into type... " />
+            <marker date="1508186501441" expanded="true" signature="11369:11399" ph="select max(t... track" />
+            <marker date="1508186501441" expanded="true" signature="11527:11557" ph="select max(a... album" />
+            <marker date="1508186501441" expanded="true" signature="12595:12623" ph="select album... album" />
+            <marker date="1508186501441" expanded="true" signature="12832:12891" ph="select album... album" />
+            <marker date="1508186501441" expanded="true" signature="13727:13755" ph="select track... track" />
+            <marker date="1508186501441" expanded="true" signature="14109:14146" ph="select max(a... album_art" />
+            <marker date="1508186501441" expanded="true" signature="14241:14268" ph="select image... album_art" />
+            <marker date="1508186501441" expanded="true" signature="15233:15263" ph="select max(g... genre" />
+            <marker date="1508186501441" expanded="true" signature="15413:15440" ph="select genre... genre" />
+            <marker date="1508186501441" expanded="true" signature="15865:15928" ph="select track... track" />
+            <marker date="1508186501441" expanded="true" signature="16044:16106" ph="select genre... genre" />
+            <marker date="1508186501441" expanded="true" signature="16286:16318" ph="select album... type" />
+            <marker date="1508186501441" expanded="true" signature="16857:16876" ph="select * fro... track" />
+            <marker date="1508186501441" expanded="true" signature="17777:17830" ph="select track... track" />
+          </folding>
         </state>
       </provider>
     </entry>
