@@ -130,10 +130,7 @@ def nop():
     button.pack()
 
 def nav():
-<<<<<<< HEAD
-=======
     global root
->>>>>>> 30ff9b1360751fcae36024d78dff706524e88484
     MenuBar = Menu(root)
     fileMenu = Menu(MenuBar, tearoff=0)
     fileMenu.add_command(label="New", command=nop)
@@ -167,11 +164,7 @@ def nav():
 
 def allButton():
     global i,songs,location,root
-<<<<<<< HEAD
     location="E:\cinema songs\Dhruva\Dhruva (2016) ~320Kbps"
-=======
-    location="H:\Music\English"
->>>>>>> 30ff9b1360751fcae36024d78dff706524e88484
     i=0
     songs = os.listdir(location)
     root = Tk()
@@ -298,3 +291,4 @@ if __name__ == '__main__':
     except Exception as e:
         print e
         printdb()
+        #allButton()
