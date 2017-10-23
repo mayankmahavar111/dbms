@@ -1,6 +1,9 @@
 # dbms
 
+###### pip install -r requirement.txt
+
 ### installation
+
 
 ###### first run 'python test.py setup' to setup database and all the tables 
 

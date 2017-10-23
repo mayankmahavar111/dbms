@@ -16,7 +16,6 @@ i=0
 
 def printdb():
     db = createDb()
-
     cursor = db.cursor()
     ch=0
     os.system('cls')
