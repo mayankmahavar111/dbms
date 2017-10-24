@@ -165,17 +165,10 @@ def nav():
     root.config(menu=MenuBar)
 
 
-<<<<<<< HEAD
-def allButton():
-    global i,songs,location,root
-    location="E:\cinema songs\Dhruva\Dhruva (2016) ~320Kbps"
-    i=0
-    songs = os.listdir(location)
-=======
+
 def allButton(songs):
     global i, root
     i = 0
->>>>>>> 144532df5ce29d834420bbae299ec4b1613cbe9f
     root = Tk()
     root.minsize(width=100,height=100)
     root.resizable(width=False,height=False)
@@ -591,8 +584,4 @@ if __name__ == '__main__':
             musicplayer()
     except Exception as e:
         print e
-<<<<<<< HEAD
-        printdb()
-        #allButton()
-=======
->>>>>>> 144532df5ce29d834420bbae299ec4b1613cbe9f
+
