@@ -11,6 +11,7 @@ import getpass
 import mutagen
 import re
 from mutagen.mp3 import MP3
+from PIL import ImageTk,Image
 
 i=0
 
@@ -102,6 +103,7 @@ def playSongs(songs,index):
             filename =str(songs[index])
             f = mp3play.load(filename)
             f.play()
+            art(songs,i)
             print filename,f.isplaying(), f.ispaused(), f.volume(100), i
     except:
         if index < 0:
@@ -112,6 +114,7 @@ def playSongs(songs,index):
         filename =str(songs[index])
         f = mp3play.load(filename)
         f.play()
+        art(songs, i)
         print f.isplaying(), f.ispaused(), f.volume(100), i
 
 def pause(songs,index):
@@ -127,6 +130,38 @@ def nop():
     filewin = Toplevel(root)
     button = Button(filewin, text="NO Operation")
     button.pack()
+
+def art(songs,i):
+    global root,panel
+    db=callDb()
+    cursor=db.cursor()
+    query=getQuery('get album')
+    query=query.format(
+        track_name=songs[i].split('/')[-1]
+    )
+    try:
+        cursor.execute(query)
+        temp= cursor.fetchone()[0]
+        quer=getQuery('get image')
+        quer=quer.format(
+            albumid=temp
+        )
+        cursor.execute(quer)
+        temp=cursor.fetchone()[0]
+        x = Image.open(temp)
+        x = x.resize((600, 600))
+        img = ImageTk.PhotoImage(x)
+        #print "hello"
+        panel.configure(image=img)
+        panel.image = img
+        #print "World"
+        root.mainloop()
+    except Exception as e:
+        print e
+        pass
+    cursor.close()
+    db.close()
+    pass
 
 def nav():
     global root
@@ -162,17 +197,23 @@ def nav():
 
 
 def allButton(songs):
-    global i, root
+    global i, root,panel
     i = 0
     root = Tk()
     root.minsize(width=100,height=100)
     root.resizable(width=False,height=False)
     nav()
+    print "Hello World"
     pauseCommand = lambda : pause(songs,i)
     playCommand= lambda : playSongs(songs,i)
     nextCommand = lambda : playSongs(songs,i+1)
     prevCommand = lambda :playSongs(songs,i-1)
     browseCommand=lambda :fileDialogue()
+    img=Image.open('naruto-02.jpg')
+    temp=img.resize((600,600))
+    img = ImageTk.PhotoImage(temp)
+    panel = Tkinter.Label(root, image=img)
+    panel.pack(side="bottom", fill="both", expand="yes")
     image1=PhotoImage(file="src/play.gif")
     play=Tkinter.Button(root,image=image1,command=playCommand)
     image2=PhotoImage(file="src/pause.gif")
@@ -371,6 +412,10 @@ def getQuery(x):
         return """insert into genre (genreid,genrename) VALUES ("{genreid}","{genre_name}")"""
     if x=="insert_type":
         return """insert into type (albumid,trackid,genreid) VALUES ("{albumid}","{trackid}","{genreid}")"""
+    if x=="get album":
+        return """select albumid from track where track_name="{track_name}"  """
+    if x=="get image":
+        return """select image from album_art where albumid="{albumid}" """
 
 def query(db,file,tracks,index):
     cursor=db.cursor()
