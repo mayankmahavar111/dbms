@@ -165,10 +165,6 @@ def nav():
     root.config(menu=MenuBar)
 
 
-<<<<<<< HEAD
-
-=======
->>>>>>> 1f58288a4c2b5a1ede02b5824ad1889bebe861f4
 def allButton(songs):
     global i, root
     i = 0

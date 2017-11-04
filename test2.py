@@ -12,6 +12,7 @@ def callback():
     x = Image.open(temp)
     x = x.resize((600, 600))
     img2 = ImageTk.PhotoImage(x)
+    lab=Tkinter.Label(name="h")
     panel.configure(image=img2)
     panel.image = img2
     i=i+1

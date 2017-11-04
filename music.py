@@ -14,6 +14,176 @@ from mutagen.mp3 import MP3
 from PIL import ImageTk,Image
 
 i=0
+def listSong(track):
+    root= Tk()
+    root.maxsize(width=400,height=400)
+    destroyCommand = lambda  : root.destroy()
+    box = Listbox(root)
+    button =Button(root,text="play",command = destroyCommand,width=10)
+    #back=Button(root,text="Back",command=insert,width=10)
+    box.pack()
+    for x in track:
+        box.insert(END,x.split('/')[-1])
+    button.pack()
+    #back.pack()
+    root.mainloop()
+
+def showList(temp,cursor):
+   test=[]
+   for x in temp:
+      test.append(getLocation(cursor,x))
+   listSong(test)
+   allButton(test)
+
+def getLocation(cursor,x):
+   query="select location from track where track_name like '%"+x[0]+"%'"
+   print query
+   try:
+      cursor.execute(query)
+      return cursor.fetchone()[0]+'/'+x[0]
+   except Exception as e:
+      print e
+
+def doubleSearch(text,table):
+   if 'track' in table:
+      temp='select track_name from type,'+table[0]+','+table[1]+' where '
+      temp+=table[0]+'.'+get(table[0]) +" like '%"+text+"%'"
+      temp+=' and '+table[1]+'.'+get(table[1]) + " like '%"+text+"%'"
+      temp+=' and type.'+table[0]+'id='+table[0]+'.'+table[0]+'id'
+      temp+=' and type.'+table[1]+'id='+table[1]+'.'+table[1]+'id'
+      return temp
+   else:
+      temp = 'select track_name from type,track,' + table[0] + ',' + table[1] + ' where '
+      temp += table[0] + '.' + get(table[0]) + " like '%" + text + "%'"
+      temp += ' and ' + table[1] + '.' + get(table[1]) + " like '%" + text + "%'"
+      temp += ' and type.' + table[0] + 'id=' + table[0] + '.' + table[0] + 'id'
+      temp += ' and type.' + table[1] + 'id=' + table[1] + '.' + table[1] + 'id'
+      temp+= ' and type.trackid=track.trackid'
+      return temp
+def singleSearch(text,table):
+   temp="select "+table+"."+get(table)+" from "+table+" where "+get(table)+" like '%"+text+"%' "
+   #temp+=" and type."+table+"id"+"="+table+"."+table+"id"
+   #temp+=" and type.trackid=track.trackid"
+   return temp
+
+
+def join(text):
+   temp = "select track.track_name from track inner JOIN  TYPE ON TYPE.Trackid = track.trackid inner join  album ON TYPE.albumid=album.albumid inner JOIN  genre on TYPE.genreid = genre.genreid"
+   temp += " and track.track_name like '%" + text + "%'"
+   temp += " or album.album_name like '%" + text + "%'"
+   temp += " and track.album_name = album.album_name"
+   temp += " and type.trackid=track.trackid"
+   temp += " and type.genreid =  genre.genreid"
+   return temp
+
+def get(x):
+   if x.lower() =='album':
+      return 'album_name'
+   if x.lower() == 'track':
+      return 'track_name'
+   if x.lower() == 'genre':
+      return 'genrename'
+   return ''
+
+def showTable(x):
+   for row in x:
+     print row
+   print len(x)
+
+def callDb():
+    with open('Credential.txt','r') as f:
+        lines=f.readlines()
+    username=lines[0].split('\n')[0]
+    password=lines[1].split('\n')[0]
+    host=lines[2].split('\n')[0]
+    database=lines[3].split('\n')[0]
+    db = MySQLdb.connect(host,username,password,database)
+    return db
+
+
+def allstates(lng,dic,textBox,root):
+   os.system('cls')
+   x= lng.state()
+   test=[]
+   for i in range(len(x)):
+      if x[i] == 1 :
+         test.append(dic[i])
+         print dic[i],' is selected'
+   text=textBox.get("1.0","end-1c")
+   text=text.split('\n')[0]
+   if len(test)==0:
+      temp=join(text)
+   if len(test)==1:
+      temp=singleSearch(text,test[0])
+   if len(test)==2:
+      temp=doubleSearch(text,test)
+   """
+   temp='select * from '
+   temp2=[]
+   for i in test:
+      temp2.append(i)
+   temp+=','.join(temp2)
+   temp+=" where "
+   temp2=len(test)
+   if temp2>1:
+      for i in test:
+         temp+=i+"."+test[i]+' like "%'+text+'%"'
+         if temp2>1:
+            temp += " or "
+         temp2-=1
+      temp2=len(test)
+      temp+=" and "
+      for i in test:
+         if temp2==1:
+            temp+=i+"."+"albumid"
+            break
+         temp+=i+"."+"albumid"+"="
+         temp2-=1
+   else:
+      for i in test:
+         temp += test + ' like "%' + text + '%"'
+   """
+   print temp
+   db=callDb()
+   cursor=db.cursor()
+   try:
+      cursor.execute(temp)
+      temp=cursor.fetchall()
+      showTable(temp)
+   except Exception as e:
+      print e
+   root.destroy()
+   showList(temp,cursor)
+
+
+class Checkbar(Frame):
+   def __init__(self, parent=None, picks=[], side=LEFT, anchor=W):
+      Frame.__init__(self, parent)
+      self.vars = []
+      for pick in picks:
+         var = IntVar()
+         chk = Checkbutton(self, text=pick, variable=var)
+         chk.pack(side=side, anchor=anchor, expand=YES)
+         self.vars.append(var)
+   def state(self):
+      return map((lambda var: var.get()), self.vars)
+
+
+def Search(root):
+   root.destroy()
+   root = Tk()
+   dic=['Artist', 'Album', 'track','Genre']
+   lng = Checkbar(root,dic )
+   lng.pack(side=TOP,  fill=X)
+   lng.config(relief=GROOVE, bd=2)
+   textBox = Text(root, height=2, width=10)
+   textBox.pack()
+   searchCommand= lambda :allstates(lng,dic,textBox,root)
+   Button(root, text='Search', command=searchCommand).pack(side=RIGHT)
+   root.mainloop()
+
+
+
 
 def printdb():
     db = createDb()
@@ -103,8 +273,9 @@ def playSongs(songs,index):
             filename =str(songs[index])
             f = mp3play.load(filename)
             f.play()
+            print filename, f.isplaying(), f.ispaused(), f.volume(100), i
             art(songs,i)
-            print filename,f.isplaying(), f.ispaused(), f.volume(100), i
+
     except:
         if index < 0:
             index = 0
@@ -114,8 +285,9 @@ def playSongs(songs,index):
         filename =str(songs[index])
         f = mp3play.load(filename)
         f.play()
-        art(songs, i)
         print f.isplaying(), f.ispaused(), f.volume(100), i
+        art(songs, i)
+
 
 def pause(songs,index):
     global i,f
@@ -174,7 +346,7 @@ def nav():
     fileMenu.add_command(label="Close", command=nop)
     fileMenu.add_separator()
 
-    fileMenu.add_command(label="Exit", command=root.quit)
+    fileMenu.add_command(label="Exit", command=root.destroy)
     MenuBar.add_cascade(label="File", menu=fileMenu)
     editMenu = Menu(MenuBar, tearoff=0)
     editMenu.add_command(label="Undo", command=nop)
@@ -208,7 +380,8 @@ def allButton(songs):
     playCommand= lambda : playSongs(songs,i)
     nextCommand = lambda : playSongs(songs,i+1)
     prevCommand = lambda :playSongs(songs,i-1)
-    browseCommand=lambda :fileDialogue()
+    browseCommand=lambda :insert(1)
+    searchCommand=lambda :Search(root)
     img=Image.open('naruto-02.jpg')
     temp=img.resize((200,200))
     img = ImageTk.PhotoImage(temp)
@@ -224,11 +397,13 @@ def allButton(songs):
     prev = Tkinter.Button(root,image=image4,command = prevCommand,borderwidth=4,height=30,width=60,relief=GROOVE)
     image5 = PhotoImage(file="src/browse.gif")
     brow=Tkinter.Button(root,image=image5,command=browseCommand,borderwidth=4,height=30,width=60,relief=GROOVE)
+    sear=Tkinter.Button(root,text='search',command=searchCommand)
     play.pack(side="left")
     pau.pack(side="left")
     next.pack(side="left")
     prev.pack(side="left")
     brow.pack(side="left")
+    sear.pack(side="left")
     root.mainloop()
 
 def fileDialogue():
@@ -300,16 +475,6 @@ def storCredentials(username,password,host,databse):
     f.write(username+'\n'+password+'\n'+host+'\n'+databse)
     f.close()
 
-def callDb():
-    lines=[]
-    with open('Credential.txt','r') as f:
-        lines=f.readlines()
-    username=lines[0].split('\n')[0]
-    password=lines[1].split('\n')[0]
-    host=lines[2].split('\n')[0]
-    database=lines[3].split('\n')[0]
-    db = MySQLdb.connect(host,username,password,database)
-    return db
 
 
 def createDb():
@@ -378,9 +543,6 @@ def getTrack(file):
     #print location,songs[0]
     return track
 
-def showTable(x):
-    for row in x:
-        print row
 
 def getFlag(data,key):
     for x in data:
@@ -551,10 +713,13 @@ def query(db,file,tracks,index):
         return
 
 
-def insert():
+def insert(x):
     try:
-        db=createDb()
-        check(db)
+        if x==0:
+            db=createDb()
+            check(db)
+        else:
+            db=callDb()
         #print "hello"
         file=fileDialogue()
         track=getTrack(file)
@@ -603,7 +768,7 @@ if __name__ == '__main__':
         if sys.argv[1] == 'setup' :
             setup()
         if sys.argv[1] == 'insert':
-            insert()
+            insert(0)
         if sys.argv[1] == 'prompt':
             printdb()
         if sys.argv[1] == 'musicplayer':
