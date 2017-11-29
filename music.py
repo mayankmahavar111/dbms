@@ -431,12 +431,17 @@ def listPlaylist(root,textBox):
     root.destroy()
     db=callDb()
     cursor=db.cursor()
-    query='select playlistid from playlist where playlistname like "'+inputValue+'"'
-    cursor.execute(query)
-    playid=cursor.fetchone()[0]
-    query='select track_name,location from track,contains where track.trackid=contains.trackid and contains.playlistid='+str(playid)+' order by rand()'
-    cursor.execute(query)
-    data=cursor.fetchall()
+    if inputValue == 'mostplayed':
+        query='select * from mostplayed'
+        cursor.execute(query)
+        data=cursor.fetchall()
+    else:
+        query='select playlistid from playlist where playlistname like "'+inputValue+'"'
+        cursor.execute(query)
+        playid=cursor.fetchone()[0]
+        query='select track_name,location from track,contains where track.trackid=contains.trackid and contains.playlistid='+str(playid)+' order by rand()'
+        cursor.execute(query)
+        data=cursor.fetchall()
     track=getSong(data)
     listSong(track)
     allButton(track)

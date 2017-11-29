@@ -77,7 +77,7 @@ CREATE TABLE IF NOT EXISTS soloPerformer(
 );
 
 create view if not EXISTS mostplayed as
-select concat(location,"/",track_name) from track
+select Track_name,Location from track
 where  Favourite  > 0
 order by Favourite desc
 ;
