@@ -23,7 +23,7 @@ def listSong(track):
     #back=Button(root,text="Back",command=insert,width=10)
     box.pack()
     for x in track:
-        box.insert(END,x.split('/')[-1])
+        box.insert(END,x)
     button.pack()
     #back.pack()
     root.mainloop()
@@ -152,6 +152,7 @@ def allstates(lng,dic,textBox,root):
       showTable(temp)
    except Exception as e:
       print e
+      pass
    root.destroy()
    showList(temp,cursor)
 
@@ -239,6 +240,21 @@ def select(event):
     picked  = widget.get(select[0])
     print picked
 
+def updateFav(filename):
+    print filename
+    db=callDb()
+    cursor=db.cursor()
+    query="update track set Favourite = Favourite +1 where track_name like '"+filename+"'"
+    print query
+    try:
+        cursor.execute(query)
+        print "updated"
+        db.commit()
+    except Exception as e:
+        print e
+        pass
+    return
+
 def listsong():
     filename = "E:\cinema songs\Dhruva\Dhruva (2016) ~320Kbps"
     songs= os.listdir(filename)
@@ -273,7 +289,8 @@ def playSongs(songs,index):
             filename =str(songs[index])
             f = mp3play.load(filename)
             f.play()
-            print filename, f.isplaying(), f.ispaused(), f.volume(100), i
+            print filename, f.isplaying(), f.ispaused(), f.volume(100), i,filename.split('/')[-1]
+            updateFav(filename.split('/')[-1])
             art(songs,i)
 
     except:
@@ -285,7 +302,8 @@ def playSongs(songs,index):
         filename =str(songs[index])
         f = mp3play.load(filename)
         f.play()
-        print f.isplaying(), f.ispaused(), f.volume(100), i
+        print f.isplaying(), f.ispaused(), f.volume(100), i,filename.split('/')[-1]
+        updateFav(filename.split('/')[-1])
         art(songs, i)
 
 
@@ -335,6 +353,41 @@ def art(songs,i):
     db.close()
     pass
 
+def playId(playlistname):
+    db=callDb()
+    cursor=db.cursor()
+    query="select max(playlistid) from playlist"
+    cursor.execute(query)
+    temp=cursor.fetchone()[0]
+    if temp == None :
+        playlistid=1
+    else:
+        playlistid = int(temp) +1
+
+    query="insert into playlist VALUES ("+str(playlistid)+",'"+str(playlistname)+"')"
+    print query
+    cursor.execute(query)
+    db.commit()
+    return
+
+def retrieve_input(root,textBox):
+    inputValue=textBox.get("1.0","end-1c")
+    print(inputValue)
+    root.destroy()
+    playId(inputValue)
+    return
+
+
+def CreatePlaylist(x):
+    root = Tk()
+    textBox = Text(root, height=2, width=10)
+    textBox.pack()
+    buttonCommit = Button(root, height=1, width=10, text="Commit",
+                          command=lambda: retrieve_input(root,textBox))
+    buttonCommit.pack()
+    mainloop()
+
+
 def nav():
     global root
     MenuBar = Menu(root)
@@ -382,6 +435,7 @@ def allButton(songs):
     prevCommand = lambda :playSongs(songs,i-1)
     browseCommand=lambda :insert(1)
     searchCommand=lambda :Search(root)
+    playlistCommand = lambda :CreatePlaylist(root)
     img=Image.open('naruto-02.jpg')
     temp=img.resize((200,200))
     img = ImageTk.PhotoImage(temp)
@@ -398,12 +452,14 @@ def allButton(songs):
     image5 = PhotoImage(file="src/browse.gif")
     brow=Tkinter.Button(root,image=image5,command=browseCommand,borderwidth=4,height=30,width=60,relief=GROOVE)
     sear=Tkinter.Button(root,text='search',command=searchCommand)
+    playlist = Tkinter.Button(root, text='createPlaylist', command=playlistCommand)
     play.pack(side="left")
     pau.pack(side="left")
     next.pack(side="left")
     prev.pack(side="left")
     brow.pack(side="left")
     sear.pack(side="left")
+    playlist.pack(side="left")
     root.mainloop()
 
 def fileDialogue():

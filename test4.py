@@ -1,3 +1,4 @@
+
 from Tkinter import *
 import os
 import MySQLdb
@@ -36,14 +37,14 @@ def doubleSearch(text,table):
    if 'track' in table:
       temp='select track_name from type,'+table[0]+','+table[1]+' where '
       temp+=table[0]+'.'+get(table[0]) +" like '%"+text+"%'"
-      temp+=' and '+table[1]+'.'+get(table[1]) + " like '%"+text+"%'"
+      temp+=' or '+table[1]+'.'+get(table[1]) + " like '%"+text+"%'"
       temp+=' and type.'+table[0]+'id='+table[0]+'.'+table[0]+'id'
       temp+=' and type.'+table[1]+'id='+table[1]+'.'+table[1]+'id'
       return temp
    else:
       temp = 'select track_name from type,track,' + table[0] + ',' + table[1] + ' where '
       temp += table[0] + '.' + get(table[0]) + " like '%" + text + "%'"
-      temp += ' and ' + table[1] + '.' + get(table[1]) + " like '%" + text + "%'"
+      temp += ' or ' + table[1] + '.' + get(table[1]) + " like '%" + text + "%'"
       temp += ' and type.' + table[0] + 'id=' + table[0] + '.' + table[0] + 'id'
       temp += ' and type.' + table[1] + 'id=' + table[1] + '.' + table[1] + 'id'
       temp+= ' and type.trackid=track.trackid'
@@ -140,6 +141,7 @@ def allstates(lng,dic,textBox,root):
       showTable(temp)
    except Exception as e:
       print e
+      pass
    root.destroy()
    showList(temp,cursor)
 

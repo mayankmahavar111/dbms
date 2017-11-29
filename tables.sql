@@ -58,4 +58,10 @@ create TABLE if not EXISTS artist(
   FirstName VARCHAR(255) NOT NULL DEFAULT ' ',
   MiddleName VARCHAR(255) NOT NULL DEFAULT ' ',
   LastName VARCHAR(255) NOT NULL DEFAULT ' '
-)
+);
+
+create view if not EXISTS mostplayed as
+select concat(location,"/",track_name) from track
+where  Favourite  > 0
+order by Favourite desc
+;
