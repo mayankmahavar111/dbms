@@ -28,20 +28,17 @@ def playId(playlistname):
     try:
         cursor.execute(query)
         print cursor.fetchone()[0]
-        return
-    except Exception as e:
-        print e
-        exit()
-    """
-    if data != None:
         print "already exists"
         return
+    except Exception as e:
+        pass
+
     query="insert into playlist VALUES ("+str(playlistid)+",'"+str(playlistname)+"')"
     print query
     cursor.execute(query)
     db.commit()
     return
-    """
+
 
 
 def retrieve_input(root,textBox):
@@ -99,15 +96,23 @@ def insertPlaylist(playname):
                 query='select playlistid from playlist where playlistname like "'+playname+'"'
                 cursor.execute(query)
                 playid=cursor.fetchone()[0]
+                print playid
                 query='select trackid from track where track_name like "'+x+'"'
                 cursor.execute(query)
                 trackid=cursor.fetchone()[0]
-                query='insert into contains VALUES ('+str(playid)+','+str(trackid)+')'
+                query='insert into contains VALUES ('+str(trackid)+','+str(playid)+')'
                 print query
                 cursor.execute(query)
                 db.commit()
             except Exception as e:
                 print e
+                query= 'select * from contains where trackid = '+str(trackid)
+                cursor.execute(query)
+                print cursor.fetchall()
+
+                query= 'select * from contains where playlistid = '+str(playid)
+                cursor.execute(query)
+                print cursor.fetchall()
                 break
         else:
             print "Not inside track first add in track"
