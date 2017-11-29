@@ -364,6 +364,15 @@ def playId(playlistname):
     else:
         playlistid = int(temp) +1
 
+    query = 'select playlistid from playlist where playlistname like "' + str(playlistname) + '"'
+    try:
+        cursor.execute(query)
+        data=cursor.fetchone()[0]
+        print "already exists"
+        return
+    except Exception as e:
+        pass
+
     query="insert into playlist VALUES ("+str(playlistid)+",'"+str(playlistname)+"')"
     print query
     cursor.execute(query)
@@ -375,8 +384,74 @@ def retrieve_input(root,textBox):
     print(inputValue)
     root.destroy()
     playId(inputValue)
+    insertPlaylist(inputValue)
     return
 
+def insertPlaylist(playname):
+    db=callDb()
+    file = fileDialogue()
+    track=getTrack(file)
+    #print len(track)
+    cursor=db.cursor()
+    for x in track:
+        query='select count(*) from track where track_name like "'+x+'"'
+        cursor.execute(query)
+        data=cursor.fetchone()[0]
+        if data != 0 :
+            try:
+                print "Success"
+                query='select playlistid from playlist where playlistname like "'+playname+'"'
+                cursor.execute(query)
+                playid=cursor.fetchone()[0]
+                print playid
+                query='select trackid from track where track_name like "'+x+'"'
+                cursor.execute(query)
+                trackid=cursor.fetchone()[0]
+                """
+                query='select count(*) from contains where trackid='+str(trackid)+'and playlistid='+str(playid)
+                cursor.execute(query)
+                data = cursor.fetchone()[0]
+                if data > 0 :
+                    continue
+                """
+                query='insert into contains VALUES ('+str(trackid)+','+str(playid)+')'
+                print query
+                cursor.execute(query)
+                db.commit()
+            except Exception as e:
+                print e
+                break
+        else:
+            print "Not inside track first add in track"
+            break
+    return
+
+def listPlaylist(root,textBox):
+    inputValue = textBox.get("1.0", "end-1c")
+    root.destroy()
+    db=callDb()
+    cursor=db.cursor()
+    query='select playlistid from playlist where playlistname like "'+inputValue+'"'
+    cursor.execute(query)
+    playid=cursor.fetchone()[0]
+    query='select track_name,location from track,contains where track.trackid=contains.trackid and contains.playlistid='+str(playid)+' order by rand()'
+    cursor.execute(query)
+    data=cursor.fetchall()
+    track=getSong(data)
+    listSong(track)
+    allButton(track)
+    return
+
+
+def playlistView(root):
+    root.destroy()
+    root = Tk()
+    textBox = Text(root, height=2, width=10)
+    textBox.pack()
+    buttonCommit = Button(root, height=1, width=10, text="Commit",
+                          command=lambda: listPlaylist(root, textBox))
+    buttonCommit.pack()
+    return
 
 def CreatePlaylist(x):
     root = Tk()
@@ -385,15 +460,15 @@ def CreatePlaylist(x):
     buttonCommit = Button(root, height=1, width=10, text="Commit",
                           command=lambda: retrieve_input(root,textBox))
     buttonCommit.pack()
-    mainloop()
-
+    return
 
 def nav():
     global root
+    playlist=lambda : playlistView(root)
     MenuBar = Menu(root)
     fileMenu = Menu(MenuBar, tearoff=0)
     fileMenu.add_command(label="New", command=nop)
-    fileMenu.add_command(label="Open", command=nop)
+    fileMenu.add_command(label="Open", command=playlist)
     fileMenu.add_command(label="Save", command=nop)
     fileMenu.add_command(label="Save as...", command=nop)
     fileMenu.add_command(label="Close", command=nop)
@@ -436,6 +511,7 @@ def allButton(songs):
     browseCommand=lambda :insert(1)
     searchCommand=lambda :Search(root)
     playlistCommand = lambda :CreatePlaylist(root)
+    playlistviewCommand = lambda :playlistView(root)
     img=Image.open('naruto-02.jpg')
     temp=img.resize((200,200))
     img = ImageTk.PhotoImage(temp)
