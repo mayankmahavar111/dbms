@@ -10,10 +10,16 @@ import sys
 import getpass
 import mutagen
 import re
+import random,string
 from mutagen.mp3 import MP3
 from PIL import ImageTk,Image
 
 i=0
+
+def randomword(length):
+   letters = string.ascii_lowercase
+   return ''.join(random.choice(letters) for i in range(length))
+
 def listSong(track):
     root= Tk()
     root.maxsize(width=400,height=400)
@@ -173,7 +179,7 @@ class Checkbar(Frame):
 def Search(root):
    root.destroy()
    root = Tk()
-   dic=['Artist', 'Album', 'track','Genre']
+   dic=[ 'Album', 'track','Genre']
    lng = Checkbar(root,dic )
    lng.pack(side=TOP,  fill=X)
    lng.config(relief=GROOVE, bd=2)
@@ -706,7 +712,7 @@ def getQuery(x):
     if x=="insert_album":
         return """insert into album (albumid,album_name,No_Of_Tracks) VALUES ("{albumid}","{album_name}","{length}")"""
     if x=="insert_track":
-        return """insert into track (trackid,albumid,album_name,track_name,location,released_date,length,favourite ) VALUES ("{trackid}","{albumid}","{album_name}","{track_name}","{track_location}","{released_date}","{track_length}",0)"""
+        return """insert into track (trackid,albumid,artistid,album_name,track_name,location,released_date,length,favourite ) VALUES ("{trackid}","{albumid}","{artistid}","{album_name}","{track_name}","{track_location}","{released_date}","{track_length}",0)"""
     if x=="insert_art":
         return """insert into album_art (albumartid,image,albumid) values ("{artid}","{image}","{albumid}")"""
     if x=="insert_genre":
@@ -740,13 +746,84 @@ def query(db,file,tracks,index):
                     released_date = str(details.get('TDRC'))
                     track_length = int(tracklength(x,file))
                     genre_name=str(details.get('TCON'))
+                    artist_name=str(details.get('TPE1'))
                     try:
                         image=details.tags['APIC:'].data
                     except:
                         pass
 
+                    # Artist Table
+                    #print "artist"
+                    cursor.execute('select max(artistid) from artist')
+                    artistid = getid(cursor.fetchone()[0])
+                    artist_name = artist_name.split(' ')
+                    #print len(artist_name)
+                    if len(artist_name) > 2:
+                        artist_sql = 'insert into artist values (' + str(artistid) + ',"' + artist_name[0] + '","' + artist_name[1] + '","' + artist_name[2] + '","' + str(artist_name[0]) + str(artistid) + '@gmail.com"' + ')'
+                    else:
+                        artist_sql = 'insert into artist values (' + str(artistid) + ',"' + artist_name[0] + '","' + ' ' + '","' + ' ' + '","' + str(artist_name[0]) + str(artistid) + '@gmail.com"' + ')'
+
+                    cursor.execute("select firstname from artist")
+                    data=cursor.fetchall()
+                    #print artist_sql
+                    if getFlag(data,artist_name[0]):
+                        cursor.execute(artist_sql)
+                        #print "artist done"
+                        db.commit()
+
+
+                    #phone Table
+                    #print "phone"
+                    q='select artistid from artist where firstname like "' + artist_name[0] +'"'
+                    #print q
+                    cursor.execute(q)
+                    artistid=cursor.fetchone()[0]
+                    phonenumber=random.randint(7000000000,9999999999)
+
+                    phone_sql='insert into phone values('+str(artistid)+','+str(phonenumber)+')'
+
+                    b=[artistid,phonenumber]
+
+                    cursor.execute('select artistid,phonenumber from phone')
+                    data=cursor.fetchall()
+                    #print getRelid(data,b)
+                    if getRelid(data,b):
+                        cursor.execute(phone_sql)
+                        db.commit()
+
+                    #print "hello world"
+                    if random.randint(0,1) ==0:
+                        #GroupArtist
+                        #print "group"
+                        q = 'select artistid from artist where firstname="' + artist_name[0]+'"'
+                        cursor.execute(q)
+                        groupid = cursor.fetchone()[0]
+                        groupname=randomword(random.randint(1,10))
+                        group_sql='insert into groupArtist VALUES ('+str(groupid)+',"'+groupname+'")'
+                        cursor.execute('select groupname from groupArtist')
+                        if getFlag(cursor.fetchall(),groupname):
+                            cursor.execute(group_sql)
+                            #print "group done"
+                            db.commit()
+
+                    else:
+                        #SoloPerformer
+                        #print "solo"
+                        q = 'select artistid from artist where firstname="' + artist_name[0]+'"'
+                        cursor.execute(q)
+                        groupid = cursor.fetchone()[0]
+                        groupname = artist_name[0]
+                        group_sql = 'insert into soloperformer VALUES (' + str(groupid) + ',"' + groupname + '")'
+                        cursor.execute('select performerName from soloperformer')
+                        if getFlag(cursor.fetchall(), groupname):
+                            cursor.execute(group_sql)
+                            #print "solo done"
+                            db.commit()
+
+
 
                     #album Table
+                    #print "album"
                     album_sql=getQuery('insert_album')
                     album_sql=album_sql.format(
                         albumid=albumid,
@@ -760,21 +837,29 @@ def query(db,file,tracks,index):
 
 
                     #Track Table
+                    #print "Track"
                     q='select albumid from album where album_name="'+album_name+'"'
-                    #print q
+                    print q
                     cursor.execute(q)
                     albumid=cursor.fetchone()[0]
+                    que = 'select artistid from artist where firstname="' + artist_name[0] + '"'
+                    #print que
+                    cursor.execute(que)
+                    artistid = cursor.fetchone()[0]
                     insert_sql= getQuery('insert_track')
+                    #print "hello"
                     #sql = """insert into track (trackid,album_name,track_name,location,released_date,length,favourite ) VALUES (%d,%s,%s,%s,%s,%d,0) """,(trackid,album_name,track_name,track_location,released_date,track_length)
                     format_sql =insert_sql.format(
                         trackid=trackid,
                         albumid=albumid,
+                        artistid=artistid,
                         album_name=album_name,
                         track_name=track_name,
                         track_location=file,
                         released_date=released_date,
                         track_length=track_length
                     )
+                    #print format_sql
                     cursor.execute("select track_name from track ")
                     data=cursor.fetchall()
                     if getFlag(data,track_name):
@@ -842,8 +927,12 @@ def query(db,file,tracks,index):
                         )
                         cursor.execute(type_sql)
                         db.commit()
+
+
+
                 except:
                     continue
+
 
             cursor.execute("select * from track")
             showTable(cursor.fetchall())

@@ -4,16 +4,26 @@ create table if not EXISTS ALBUM(
   No_Of_Tracks INT UNSIGNED
 );
 
+create TABLE if not EXISTS artist(
+  ArtistId INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY ,
+  FirstName VARCHAR(255) NOT NULL DEFAULT ' ',
+  MiddleName VARCHAR(255) NOT NULL DEFAULT ' ',
+  LastName VARCHAR(255) NOT NULL DEFAULT ' ',
+  email VARCHAR(255) NOT NULL DEFAULT ' '
+);
+
 create table if not EXISTS track(
 	TrackId int unsigned not null auto_increment primary key,
 	Album_name varchar(255) not null,
   AlbumId int UNSIGNED NOT NULL,
+  ArtistId int UNSIGNED NOT NULL,
 	Track_name varchar(255) not null default '',
 	Location varchar(255) not null,
 	Released_date date,
 	length int unsigned not null,
 	Favourite int unsigned not null,
-  FOREIGN KEY(AlbumId) REFERENCES ALBUM(AlbumId) ON DELETE CASCADE ON UPDATE CASCADE
+  FOREIGN KEY(AlbumId) REFERENCES ALBUM(AlbumId) ON DELETE CASCADE ON UPDATE CASCADE,
+  FOREIGN KEY(ArtistId) REFERENCES Artist(ArtistId) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
 
@@ -53,25 +63,16 @@ CREATE TABLE if not EXISTS CONTAINS(
   PRIMARY KEY (TrackId,PlaylistId)
 );
 
-create TABLE if not EXISTS artist(
-  ArtistId INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY ,
-  TrackId INT UNSIGNED NOT NULL ,
-  FirstName VARCHAR(255) NOT NULL DEFAULT ' ',
-  MiddleName VARCHAR(255) NOT NULL DEFAULT ' ',
-  LastName VARCHAR(255) NOT NULL DEFAULT ' ',
-  email VARCHAR(255) NOT NULL DEFAULT ' ',
-  FOREIGN KEY (TrackId) REFERENCES track(TrackId) ON DELETE CASCADE ON UPDATE CASCADE
-);
+
 
 CREATE TABLE if NOT EXISTS phone(
   ArtistId Int UNSIGNED NOT NULL ,
-  phoneNumber Int NOT NULL ,
+  phoneNumber BIGINT(20) NOT NULL ,
   FOREIGN KEY (ArtistId) REFERENCES artist(ArtistId) ON DELETE CASCADE ON UPDATE CASCADE,
-  PRIMARY KEY (ArtistId,phoneNumber),
-  CHECK (phoneNumber>=10000000000 AND phoneNumber <= 9999999999)
+  PRIMARY KEY (ArtistId,phoneNumber)
 );
 
-CREATE TABLE IF NOT EXISTS group(
+CREATE TABLE IF NOT EXISTS groupArtist(
   groupID INT UNSIGNED NOT NULL ,
   groupName VARCHAR(255) DEFAULT " ",
   FOREIGN KEY (groupID) REFERENCES artist(ArtistId) ON DELETE CASCADE ON UPDATE CASCADE ,
